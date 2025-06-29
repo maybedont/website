@@ -1,0 +1,10 @@
+# Generated files by hugo
+/public/
+/resources/
+/assets/jsconfig.json
+hugo_stats.json
+/themes/*/public/
+/themes/*/resources/
+
+# Temporary lock file while building
+.hugo_build.lock
