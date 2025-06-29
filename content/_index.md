@@ -1,3 +1,7 @@
+---
+title: INDEX TITLE
+---
+
 ## MCP Security
 
 A new protocol requires a new policy
