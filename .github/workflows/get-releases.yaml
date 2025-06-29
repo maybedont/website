@@ -1,0 +1,20 @@
+name: Get Latest Release Info
+on:
+  workflow_dispatch: # Manual trigger, adjust as needed
+
+jobs:
+  get-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get latest release info
+        run: |
+          gh api repos/maybedont/maybe-dont/releases/latest --jq '{name, body, assets: [.assets[] | {name, browser_download_url}]}' > release-info.json
+          cat release-info.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release info as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-info
+          path: release-info.json
