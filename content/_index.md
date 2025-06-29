@@ -1,4 +1,4 @@
-# MCP Security
+## MCP Security
 
 A new protocol requires a new policy
 
