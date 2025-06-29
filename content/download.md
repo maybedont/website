@@ -4,9 +4,9 @@ title: Download
 
 ## Try The Gateway
 
-The latest version is `v0.0.3` - you can download a binary for your architecture below:
+The latest version is `v0.0.6` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.0.3 >}}
+{{< list-files-for-version version = v0.0.6 >}}
 
 ## Configuration
 
