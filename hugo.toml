@@ -2,3 +2,7 @@ baseURL = 'https://maybedont.ai/'
 languageCode = 'en-us'
 title = "Maybe Don't AI"
 theme = 'basic'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
