@@ -127,7 +127,7 @@ Common Expression Language (CEL) rules for deterministic policy enforcement:
 ```yaml
 policy_validation:
   enabled: true
-  # Optional: path to custom rules file
+  # Optional: path to custom rules file otherwise default rules will be used.
   rules_file: "cel_rules.yaml"
 ```
 
@@ -135,16 +135,13 @@ policy_validation:
 
 The gateway includes default rules that block dangerous operations:
 
-- **kubectl delete namespace** - Prevents namespace deletion
-- **kubectl delete pod** - Prevents pod deletion
-- **kubectl delete deployment** - Prevents deployment deletion
-- **kubectl delete service** - Prevents service deletion
-- **kubectl delete configmap** - Prevents configmap deletion
-- **kubectl delete secret** - Prevents secret deletion
+- **kubectl delete namespace** - Prevents namespace deletion when using an mcp server that provides kubectl access.
 
 ##### Custom CEL Rules
 
-Create your own rules in `cel_rules.yaml`:
+Set the config file `policy_validation.rules_file` to the name of the rules file, like `cel_rules.yaml`.
+
+Add your own rules to `cel_rules.yaml`:
 
 ```yaml
 rules:
@@ -164,10 +161,12 @@ rules:
   description: Allow only specific tools
   expression: |-
     get(request, "method", "") == "tools/call" &&
-    get(request.params, "name", "") in ["git", "docker", "kubectl"]
-  action: allow
-  message: Tool is in allowed list
+    get(request.params, "name", "") != "kubectl"
+  action: deny
+  message: Tool is not in allowed list
 ```
+
+Note that if there are no matches for CEL policies, they will pass by default.
 
 ### AI Policy Validation
 
@@ -178,7 +177,7 @@ ai_validation:
   enabled: true
   endpoint: "https://api.openai.com/v1/chat/completions"
   model: "gpt-4o-mini"
-  # Optional: path to custom AI rules file
+  # Optional: path to custom AI rules file. If not set, default rules will be used.
   rules_file: "ai_rules.yaml"
   # API key (can also be set via OPENAI_API_KEY env var)
   api_key: "${OPENAI_API_KEY}"
@@ -188,13 +187,19 @@ ai_validation:
 
 The gateway includes AI rules for detecting:
 
-- **Destructive actions** - Blocks commands like `rm -rf`, disk formatting, etc.
-- **System file modification** - Prevents changes to system directories
-- **Path traversal attacks** - Blocks directory traversal attempts
+• **Mass Deletion Prevention**: Blocks wildcard/recursive file deletions and dangerous flags
+• **System Directory Protection**: Prevents access to critical system paths (/etc/, /sys/, /proc/, etc.)
+• **Command Execution Control**: Blocks dangerous command tools (bash, shell, powershell, etc.)
+• **Credential File Protection**: Prevents access to credential files (.env, .key, .pem, .ssh/, etc.)
+• **External Network Restrictions**: Blocks HTTP requests to external domains (except approved ones)
+• **Executable File Prevention**: Blocks creation of executable files outside approved directories
+• **Large File Operation Limits**: Prevents operations on files >100MB or content >10MB
 
 #### Custom AI Rules
 
-Create your own AI rules in `ai_rules.yaml`:
+First set `ai_validation.rules_file` to the name of your file, like `ai_rules.yaml`.
+
+Then write your own AI rules in `ai_rules.yaml`:
 
 ```yaml
 rules:
@@ -241,8 +246,8 @@ ai_validation:
   enabled: false
 
 audit:
-  path: stdout
-  format: text
+  path: "audit.log"
+  format: json
 ```
 
 #### Example 2: Production HTTP Setup
