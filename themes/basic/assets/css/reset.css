@@ -51,10 +51,17 @@ textarea:not([rows]) {
 img,
 canvas,
 picture,
+pre,
 svg,
 video {
 	display: block;
 	max-inline-size: 100%;
+}
+
+pre {
+	overflow: auto;
+	padding-block: 1ex;
+	padding-inline: 1ch;
 }
 
 img[width][height],
