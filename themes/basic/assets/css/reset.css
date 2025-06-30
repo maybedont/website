@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	hyphens: auto;
+	line-height: calc(1em + 0.5rem);
+	margin: 0;
+	overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		interpolate-size: allow-keywords;
+	}
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	min-block-size: 100vh;
+	-webkit-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.1;
+	text-wrap: balance;
+}
+
+p {
+	text-wrap: pretty;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+textarea:not([rows]) {
+	min-block-size: 5lh;
+}
+
+img,
+canvas,
+picture,
+svg,
+video {
+	display: block;
+	max-width: 100%;
+}
+
+img[width][height] {
+	height: auto; /* Preserve aspect ratio */
+}
+
+/* Let SVG scale without boundaries */
+img[src$=".svg"],
+svg {
+	width: 100%;
+	height: auto;
+	max-width: none;
+}
+
+/*
+role="list" is required in the html for accessibility when removing list styles
+due to a Safari bug-feature,
+see https://www.scottohara.me/blog/2019/01/12/lists-and-safari.html
+*/
+ol[role="list"],
+ul[role="list"] {
+    list-style: none;
+}
+
+:target {
+	scroll-margin-block: 4ex;
+}
