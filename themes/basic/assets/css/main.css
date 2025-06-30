@@ -46,6 +46,7 @@
 	--text-size-heading-1: var(--step-5);
 	--text-size-heading-2: var(--step-4);
 	--text-size-heading-3: var(--step-3);
+	--text-size-small: var(--step--1);
 
 	--text-size-header-logo: var(--step-7);
 }
@@ -69,8 +70,24 @@ h6 {
 	font-size: var(--text-size-heading-3);
 }
 
+* + h2,
+* + h3,
+* + h4 {
+	margin-block-start: 1em;
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4 {
+	margin-block-start: 0.5em;
+}
+
 header .__logo {
 	font-size: var(--text-size-header-logo);
+}
+
+footer {
+	font-size: var(--text-size-small);
 }
 
 .cover {
@@ -94,4 +111,8 @@ header .__logo {
 
 .cover > :last-child:not(.__principal-element) {
 	margin-block-end: 0;
+}
+
+.visually-hidden + * {
+	margin-block-start: 0;
 }
