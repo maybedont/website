@@ -3,6 +3,8 @@ languageCode = 'en-us'
 title = "Maybe Don't, AI"
 theme = 'basic'
 
+disableKinds = ["taxonomy", "term"]
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
