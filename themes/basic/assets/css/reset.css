@@ -59,7 +59,7 @@ video {
 }
 
 pre {
-	overflow: auto;
+	overflow-x: auto;
 }
 
 img[width][height],
