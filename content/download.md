@@ -10,9 +10,9 @@ The latest version is `v0.1.1` - you can download a binary for your architecture
 
 {{< list-files-for-version version = v0.1.1 >}}
 
-### Docker
+### Container (Docker, Podman, etc.)
 
-The latest image is available at `ghcr.io/maybedont/maybe-dont:v0.1.1`. You can run with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.1`. You can run with something like:
 
 ```
 podman run \
