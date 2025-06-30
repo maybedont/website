@@ -54,19 +54,20 @@ picture,
 svg,
 video {
 	display: block;
-	max-width: 100%;
+	max-inline-size: 100%;
 }
 
-img[width][height] {
-	height: auto; /* Preserve aspect ratio */
+img[width][height],
+img[inline-size][block-size] {
+	block-size: auto; /* Preserve aspect ratio */
 }
 
 /* Let SVG scale without boundaries */
 img[src$=".svg"],
 svg {
-	width: 100%;
-	height: auto;
-	max-width: none;
+	block-size: auto;
+	inline-size: 100%;
+	max-inline-size: none;
 }
 
 /*
