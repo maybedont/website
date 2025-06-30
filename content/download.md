@@ -4,9 +4,26 @@ title: Download
 
 ## Try The Gateway
 
+### Binary
+
 The latest version is `v0.1.0` - you can download a binary for your architecture below:
 
 {{< list-files-for-version version = v0.1.0 >}}
+
+### Docker
+
+The latest image is available at `ghcr.io/maybedont/maybe-dont:v0.1.0`. You can run with something like:
+
+```
+podman run \
+  -e MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION" \
+  -e OPENAI_API_KEY="$OPENAI_API_KEY" \
+  -v $(pwd)/config.yaml:/config.yaml \
+  -p 8080:8080 \
+  ghcr.io/maybedont/maybe-dont:v0.1.0 start
+```
+
+NOTE: Make sure the config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
 
 ## Configuration
 
