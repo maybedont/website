@@ -1,5 +1,5 @@
 ---
-title: INDEX TITLE
+title: Home
 ---
 
 ## MCP Security
