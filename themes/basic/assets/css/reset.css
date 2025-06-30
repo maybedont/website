@@ -60,8 +60,6 @@ video {
 
 pre {
 	overflow: auto;
-	padding-block: 1ex;
-	padding-inline: 1ch;
 }
 
 img[width][height],
@@ -89,4 +87,13 @@ ul[role="list"] {
 
 :target {
 	scroll-margin-block: 4ex;
+}
+
+.visually-hidden:not(:active):not(:focus):not(:focus-within) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	overflow: hidden;
+	position: absolute;
+	size: 1px;
+	white-space: nowrap;
 }
