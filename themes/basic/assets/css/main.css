@@ -77,6 +77,7 @@
 	--text-size-heading-3: var(--step-3);
 	--text-size-heading-4: var(--step-4);
 	--text-size-heading-5: var(--step-2);
+	--text-size-heading-6: var(--step-1);
 	--text-size-big: var(--step-1);
 	--text-size-small: var(--step--1);
 
@@ -116,12 +117,13 @@ h4 {
 	font-size: var(--text-size-heading-4);
 }
 
-h5,
-h6 {
+h5 {
 	font-size: var(--text-size-heading-5);
+	font-weight: normal;
 }
 
 h6 {
+	font-size: var(--text-size-heading-6);
 	font-weight: normal;
 }
 
