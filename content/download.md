@@ -14,7 +14,7 @@ The latest version is `v0.1.1` - you can download a binary for your architecture
 
 The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.1`. You can run with something like:
 
-```
+```bash
 podman run \
   -e MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION" \
   -e OPENAI_API_KEY="$OPENAI_API_KEY" \
@@ -204,13 +204,13 @@ ai_validation:
 
 The gateway includes AI rules for detecting:
 
-• **Mass Deletion Prevention**: Blocks wildcard/recursive file deletions and dangerous flags
-• **System Directory Protection**: Prevents access to critical system paths (/etc/, /sys/, /proc/, etc.)
-• **Command Execution Control**: Blocks dangerous command tools (bash, shell, powershell, etc.)
-• **Credential File Protection**: Prevents access to credential files (.env, .key, .pem, .ssh/, etc.)
-• **External Network Restrictions**: Blocks HTTP requests to external domains (except approved ones)
-• **Executable File Prevention**: Blocks creation of executable files outside approved directories
-• **Large File Operation Limits**: Prevents operations on files >100MB or content >10MB
+- **Mass Deletion Prevention**: Blocks wildcard/recursive file deletions and dangerous flags
+- **System Directory Protection**: Prevents access to critical system paths (/etc/, /sys/, /proc/, etc.)
+- **Command Execution Control**: Blocks dangerous command tools (bash, shell, powershell, etc.)
+- **Credential File Protection**: Prevents access to credential files (.env, .key, .pem, .ssh/, etc.)
+- **External Network Restrictions**: Blocks HTTP requests to external domains (except approved ones)
+- **Executable File Prevention**: Blocks creation of executable files outside approved directories
+- **Large File Operation Limits**: Prevents operations on files >100MB or content >10MB
 
 #### Custom AI Rules
 
