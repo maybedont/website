@@ -170,6 +170,7 @@ header > .__logo {
 	font-size: var(--text-size-header-logo);
 	font-weight: bold;
 	text-decoration: none;
+	text-wrap: balance;
 }
 
 @media (min-width: 50em) {
@@ -284,4 +285,10 @@ ul {
 
 .switcher > .__principal-element {
 	flex-basis: 75%;
+}
+
+.wrapper {
+	box-sizing: content-box;
+	margin-inline: auto;
+	max-inline-size: var(--line, var(--line-0));
 }
