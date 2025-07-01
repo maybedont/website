@@ -64,6 +64,12 @@ a:not([class]) {
 	color: inherit;
 }
 
+a:not([class]):hover,
+a:not([class]):active,
+a:not([class]):focus {
+	text-decoration-thickness: 2px;
+}
+
 h1 {
 	font-size: var(--text-size-heading-1);
 }
@@ -92,7 +98,10 @@ h3 + h4 {
 }
 
 header .__logo {
+	color: currentColor;
 	font-size: var(--text-size-header-logo);
+	font-weight: bold;
+	text-decoration: none;
 }
 
 footer {
@@ -105,6 +114,12 @@ nav a {
 	flex-wrap: nowrap;
 	column-gap: 1ch;
 	text-decoration: none;
+}
+
+nav a:active,
+nav a:hover,
+nav a:focus {
+	text-decoration: underline;
 }
 
 nav a::before {
