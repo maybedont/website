@@ -1,0 +1,295 @@
+/* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+	--step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+	--step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+	--step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+	--step-3: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+	--step-4: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+	--step-5: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
+	--step-6: clamp(3.3592rem, 2.8691rem + 2.4507vw, 4.7684rem);
+	--step-7: clamp(4.0311rem, 3.36rem + 3.3555vw, 5.9605rem);
+}
+
+/* @link https://utopia.fyi/space/calculator?c=320,18,1.2,1240,20,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+:root {
+	--space-3xs: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+	--space-2xs: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+	--space-xs: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+	--space-s: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--space-m: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+	--space-l: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+	--space-xl: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+	--space-2xl: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+	--space-3xl: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
+
+	/* One-up pairs */
+	--space-3xs-2xs: clamp(0.3125rem, 0.2038rem + 0.5435vw, 0.625rem);
+	--space-2xs-xs: clamp(0.5625rem, 0.4321rem + 0.6522vw, 0.9375rem);
+	--space-xs-s: clamp(0.875rem, 0.7446rem + 0.6522vw, 1.25rem);
+	--space-s-m: clamp(1.125rem, 0.8641rem + 1.3043vw, 1.875rem);
+	--space-m-l: clamp(1.6875rem, 1.4049rem + 1.413vw, 2.5rem);
+	--space-l-xl: clamp(2.25rem, 1.7283rem + 2.6087vw, 3.75rem);
+	--space-xl-2xl: clamp(3.375rem, 2.8098rem + 2.8261vw, 5rem);
+	--space-2xl-3xl: clamp(4.5rem, 3.4565rem + 5.2174vw, 7.5rem);
+
+  	/* Custom pairs */
+  	--space-s-l: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
+}
+
+:root {
+	--border-color: currentColor;
+	--border-weight: 2px;
+	--border-weight-strong: 6px;
+	--border-style: solid;
+	--border:
+		var(--border-weight)
+		var(--border-style)
+		var(--border-color)
+	;
+	--border-strong:
+		var(--border-weight-strong)
+		var(--border-style)
+		var(--border-color)
+	;
+
+	/* use absolute values */
+	--gutter: var(--space-s);
+	--gutter-column: var(--gutter);
+	--gutter-row: var(--gutter);
+
+	--line--2: 40ch;
+	--line--1: 60ch;
+	--line-0: 80ch;
+
+	--line-column: var(--line--2);
+
+	/* use relative values */
+	--push--2: 1ch;
+	--push--1: 0.5em;
+	--push-0: 1em;
+
+	--really-big: 999;
+
+	--text-size-base: var(--step-0);
+	--text-size-heading-1: var(--step-5);
+	--text-size-heading-2: var(--step-4);
+	--text-size-heading-3: var(--step-3);
+	--text-size-heading-4: var(--step-2);
+	--text-size-heading-5: var(--step-1);
+	--text-size-heading-6: var(--step-0);
+	--text-size-big: var(--step-1);
+	--text-size-small: var(--step--1);
+
+	--text-size-header-logo: var(--step-7);
+
+	--underline-thickness: 2px;
+	--underline-thickness-bold: calc(2 * var(--underline-thickness));
+}
+
+body {
+	font-family: serif;
+	font-size: var(--text-size-base);
+}
+
+a:not([class]) {
+	color: inherit;
+}
+
+a:not([class]):hover,
+a:not([class]):active,
+a:not([class]):focus {
+	text-decoration-thickness: var(--underline-thickness);
+}
+
+h1 {
+	border-block-end: var(--border-strong);
+	font-size: var(--text-size-heading-1);
+	text-align: center;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	max-inline-size: var(--line--2);
+}
+
+h2 {
+	font-size: var(--text-size-heading-2);
+}
+
+h3 {
+	font-size: var(--text-size-heading-3);
+}
+
+h4 {
+	font-size: var(--text-size-heading-4);
+	font-weight: normal;
+}
+
+h5 {
+	font-size: var(--text-size-heading-5);
+	font-weight: normal;
+}
+
+h6 {
+	font-size: var(--text-size-heading-6);
+	font-weight: normal;
+}
+
+* + h2,
+* + h3,
+* + h4,
+* + h5,
+* + h6 {
+	margin-block-start: var(--push-0, 1em);
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6 {
+	margin-block-start: var(--push--1, 0.5em);
+}
+
+header {
+	--threshold: 50ch; /* use for breakpoint on .__principal_element */
+
+	align-items: center;
+	border-block-end: var(--border);
+}
+
+header > nav {
+	padding-block: var(--push--1);
+}
+
+header > .__logo {
+	color: currentColor;
+	font-size: var(--text-size-header-logo);
+	font-weight: bold;
+	text-decoration: none;
+	text-wrap: balance;
+}
+
+@media (min-width: 50em) {
+	header > .__principal-element {
+		border-inline-end: var(--border);
+		padding-block: var(--gutter-row);
+		padding-inline-end: var(--gutter-column);
+	}
+}
+
+header nav ul {
+	padding-inline: 0 var(--gutter);
+}
+
+footer {
+	border-block-start: var(--border);
+	font-size: var(--text-size-small);
+}
+
+nav a {
+	align-items: center;
+	display: inline-flex;
+	column-gap: var(--push--2);
+	text-decoration: none;
+}
+
+nav a:active,
+nav a:hover,
+nav a:focus {
+	text-decoration: underline;
+}
+
+nav a::before {
+	--size: 1ch;
+
+	background-color: transparent;
+	block-size: var(--size);
+	content: "";
+	inline-size: calc(1 * var(--size));
+}
+
+nav a[aria-current]::before {
+	background-color: currentColor;
+}
+
+p {
+	max-inline-size: var(--line-0);
+}
+
+pre {
+	max-inline-size: var(--line-0);
+	padding: var(--gutter);
+}
+
+ul {
+	list-style: square;
+}
+
+.call-to-action {
+	border-inline-start: var(--border-strong);
+	margin-block: var(--gutter-column);
+	margin-inline-start: var(--gutter-column);
+	padding: var(--gutter);
+}
+
+.call-to-action a {
+	font-size: var(--text-size-big);
+	font-weight: bold;
+}
+
+.call-to-action a:active,
+.call-to-action a:hover,
+.call-to-action a:focus {
+	text-decoration-thickness: var(--underline-thickness-bold);
+}
+
+.cover {
+	display: flex;
+	flex-direction: column;
+	min-block-size: 100vh;
+	padding: var(--gutter);
+}
+
+.cover > * {
+	margin-block: var(--gutter);
+}
+
+.cover > :first-child:not(.__principal-element) {
+	margin-block-start: 0;
+}
+
+.cover > .__principal-element {
+	margin-block: auto;
+}
+
+.cover > :last-child:not(.__principal-element) {
+	margin-block-end: 0;
+}
+
+.switcher {
+	--threshold: var(--line--2);
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gutter);
+}
+
+.switcher > * {
+	flex-grow: 1;
+	flex-basis: calc((var(--threshold) - 100%) * var(--really-big));
+}
+
+.switcher > .__principal-element {
+	flex-basis: 75%;
+}
+
+.wrapper {
+	box-sizing: content-box;
+	margin-inline: auto;
+	max-inline-size: var(--line, var(--line-0));
+}

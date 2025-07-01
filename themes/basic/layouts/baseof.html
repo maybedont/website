@@ -3,11 +3,11 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body>
-  <header>
+<body class="cover wrapper">
+  <header class="switcher">
     {{ partial "header.html" . }}
   </header>
-  <main>
+  <main class="__principal-element">
     {{ block "main" . }}{{ end }}
   </main>
   <footer>

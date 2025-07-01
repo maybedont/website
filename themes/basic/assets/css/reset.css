@@ -59,7 +59,7 @@ video {
 }
 
 pre {
-	overflow: auto;
+	overflow-x: auto;
 }
 
 img[width][height],
@@ -96,4 +96,8 @@ ul[role="list"] {
 	position: absolute;
 	size: 1px;
 	white-space: nowrap;
+}
+
+.visually-hidden + * {
+	margin-block-start: 0;
 }
