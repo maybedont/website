@@ -40,7 +40,7 @@
 :root {
 	--border-color: currentColor;
 	--border-weight: 2px;
-	--border-weight-strong: 1ch;
+	--border-weight-strong: 6px;
 	--border-style: solid;
 	--border:
 		var(--border-weight)
@@ -102,7 +102,17 @@ a:not([class]):focus {
 }
 
 h1 {
+	border-block-end: var(--border-strong);
 	font-size: var(--text-size-heading-1);
+	text-align: center;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	max-inline-size: var(--line--2);
 }
 
 h2 {
@@ -151,6 +161,10 @@ header {
 	border-block-end: var(--border);
 }
 
+header > nav {
+	padding-block: var(--push--1);
+}
+
 header > .__logo {
 	color: currentColor;
 	font-size: var(--text-size-header-logo);
@@ -161,7 +175,8 @@ header > .__logo {
 @media (min-width: 50em) {
 	header > .__principal-element {
 		border-inline-end: var(--border);
-		padding-block-end: var(--gutter-row);
+		padding-block: var(--gutter-row);
+		padding-inline-end: var(--gutter-column);
 	}
 }
 
@@ -188,7 +203,7 @@ nav a:focus {
 }
 
 nav a::before {
-	--size: var(--border-weight-strong);
+	--size: 1ch;
 
 	background-color: transparent;
 	block-size: var(--size);
@@ -270,5 +285,3 @@ ul {
 .switcher > .__principal-element {
 	flex-basis: 75%;
 }
-
-
