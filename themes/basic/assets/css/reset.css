@@ -97,3 +97,7 @@ ul[role="list"] {
 	size: 1px;
 	white-space: nowrap;
 }
+
+.visually-hidden + * {
+	margin-block-start: 0;
+}
