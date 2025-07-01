@@ -75,6 +75,8 @@
 	--text-size-heading-1: var(--step-5);
 	--text-size-heading-2: var(--step-4);
 	--text-size-heading-3: var(--step-3);
+	--text-size-heading-4: var(--step-4);
+	--text-size-heading-5: var(--step-2);
 	--text-size-big: var(--step-1);
 	--text-size-small: var(--step--1);
 
@@ -106,22 +108,36 @@ h2 {
 	font-size: var(--text-size-heading-2);
 }
 
-h3,
-h4,
+h3 {
+	font-size: var(--text-size-heading-3);
+}
+
+h4 {
+	font-size: var(--text-size-heading-4);
+}
+
 h5,
 h6 {
-	font-size: var(--text-size-heading-3);
+	font-size: var(--text-size-heading-5);
+}
+
+h6 {
+	font-weight: normal;
 }
 
 * + h2,
 * + h3,
-* + h4 {
+* + h4,
+* + h5,
+* + h6 {
 	margin-block-start: var(--push-0, 1em);
 }
 
 h1 + h2,
 h2 + h3,
-h3 + h4 {
+h3 + h4,
+h4 + h5,
+h5 + h6 {
 	margin-block-start: var(--push--1, 0.5em);
 }
 
@@ -186,6 +202,7 @@ p {
 }
 
 pre {
+	max-inline-size: var(--line-0);
 	padding: var(--gutter);
 }
 
