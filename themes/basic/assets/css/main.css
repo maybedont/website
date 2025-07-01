@@ -40,9 +40,15 @@
 :root {
 	--border-color: currentColor;
 	--border-weight: 2px;
+	--border-weight-strong: 1ch;
 	--border-style: solid;
 	--border:
 		var(--border-weight)
+		var(--border-style)
+		var(--border-color)
+	;
+	--border-strong:
+		var(--border-weight-strong)
 		var(--border-style)
 		var(--border-color)
 	;
@@ -69,9 +75,13 @@
 	--text-size-heading-1: var(--step-5);
 	--text-size-heading-2: var(--step-4);
 	--text-size-heading-3: var(--step-3);
+	--text-size-big: var(--step-1);
 	--text-size-small: var(--step--1);
 
 	--text-size-header-logo: var(--step-7);
+
+	--underline-thickness: 2px;
+	--underline-thickness-bold: calc(2 * var(--underline-thickness));
 }
 
 body {
@@ -85,7 +95,7 @@ a:not([class]) {
 a:not([class]):hover,
 a:not([class]):active,
 a:not([class]):focus {
-	text-decoration-thickness: 2px;
+	text-decoration-thickness: var(--underline-thickness);
 }
 
 h1 {
@@ -159,7 +169,7 @@ nav a:focus {
 }
 
 nav a::before {
-	--size: 1ex;
+	--size: var(--border-weight-strong);
 
 	background-color: transparent;
 	block-size: var(--size);
@@ -171,12 +181,34 @@ nav a[aria-current]::before {
 	background-color: currentColor;
 }
 
+p {
+	max-inline-size: var(--line-0);
+}
+
 pre {
 	padding: var(--gutter);
 }
 
 ul {
 	list-style: square;
+}
+
+.call-to-action {
+	border-inline-start: var(--border-strong);
+	margin-block: var(--gutter-column);
+	margin-inline-start: var(--gutter-column);
+	padding: var(--gutter);
+}
+
+.call-to-action a {
+	font-size: var(--text-size-big);
+	font-weight: bold;
+}
+
+.call-to-action a:active,
+.call-to-action a:hover,
+.call-to-action a:focus {
+	text-decoration-thickness: var(--underline-thickness-bold);
 }
 
 .cover {

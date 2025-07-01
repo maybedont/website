@@ -31,3 +31,4 @@ Try it out during our early access phase, and please send us all the feedback.
 Maybe Don't AI uses a combination of ai detection, a policy engine, human in the loop (where necessary) and anomaly detection to give you confidence with your ai agents.
 
 [Talk to a founder to learn more](https://zcal.co/kendallm/30min)
+{.call-to-action}
