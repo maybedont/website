@@ -38,9 +38,14 @@
 }
 
 :root {
+	/* use absolute values */
 	--gutter: var(--space-s);
 	--gutter-column: var(--gutter);
 	--gutter-row: var(--gutter);
+
+	/* use relative values */
+	--push-0: 1em;
+	--push--1: 0.5em;
 
 	--text-size-base: var(--step-0);
 	--text-size-heading-1: var(--step-5);
@@ -53,6 +58,10 @@
 
 body {
 	font-size: var(--text-size-base);
+}
+
+a:not([class]) {
+	color: inherit;
 }
 
 h1 {
@@ -73,13 +82,13 @@ h6 {
 * + h2,
 * + h3,
 * + h4 {
-	margin-block-start: 1em;
+	margin-block-start: var(--push-0, 1em);
 }
 
 h1 + h2,
 h2 + h3,
 h3 + h4 {
-	margin-block-start: 0.5em;
+	margin-block-start: var(--push--1, 0.5em);
 }
 
 header .__logo {
@@ -88,6 +97,31 @@ header .__logo {
 
 footer {
 	font-size: var(--text-size-small);
+}
+
+nav a {
+	align-items: center;
+	display: inline-flex;
+	flex-wrap: nowrap;
+	column-gap: 1ch;
+	text-decoration: none;
+}
+
+nav a::before {
+	--size: 1ex;
+
+	background-color: transparent;
+	block-size: var(--size);
+	content: "";
+	inline-size: calc(1 * var(--size));
+}
+
+nav a[aria-current]::before {
+	background-color: currentColor;
+}
+
+pre {
+	padding: var(--gutter);
 }
 
 .cover {
