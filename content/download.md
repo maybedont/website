@@ -6,9 +6,9 @@ title: Download
 
 ### Download The Binary
 
-The latest version is `v0.1.4` - you can download a binary for your architecture below:
+The latest version is `v0.1.5` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.1.4 >}}
+{{< list-files-for-version version = v0.1.5 >}}
 
 ### Quickstart
 
@@ -35,7 +35,7 @@ Then open your browser to http://localhost:6274, set the transport to `Streamabl
 
 ### Container (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.4`. You can run it with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.5`. You can run it with something like:
 
 ```bash
 podman run \
@@ -43,7 +43,7 @@ podman run \
   -e OPENAI_API_KEY \
   -v $(pwd)/config.yaml:/config.yaml \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.1.4 start
+  ghcr.io/maybedont/maybe-dont:v0.1.5 start
 ```
 
 NOTE:
