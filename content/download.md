@@ -6,13 +6,13 @@ title: Download
 
 ### Binary
 
-The latest version is `v0.1.1` - you can download a binary for your architecture below:
+The latest version is `v0.1.2` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.1.1 >}}
+{{< list-files-for-version version = v0.1.2 >}}
 
 ### Container (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.1`. You can run with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.2`. You can run with something like:
 
 ```bash
 podman run \
@@ -20,7 +20,7 @@ podman run \
   -e OPENAI_API_KEY="$OPENAI_API_KEY" \
   -v $(pwd)/config.yaml:/config.yaml \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.1.1 start
+  ghcr.io/maybedont/maybe-dont:v0.1.2 start
 ```
 
 NOTE: Make sure the config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
