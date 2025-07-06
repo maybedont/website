@@ -66,7 +66,7 @@ In this instance, we have the binary and the config located in the user's Downlo
 }
 ```
 
-Once you're
+Once you've updated the config json, you'll need to restart Claude Desktop.
 
 ### Container (Docker, Podman, etc.)
 
