@@ -14,7 +14,7 @@ The latest version is `v0.1.4` - you can download a binary for your architecture
 
 After you extract the downloaded file, you should see a binary, and a config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
 
-```
+```bash
 export OPENAI_API_KEY="Insert your API key here for AI rule validations"
 export MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$GITHUB_TOKEN" # This is your github token, which will be used to authenticate the gateway to the Github MCP server.
 ```
@@ -24,7 +24,7 @@ Now you can connect to the local gateway as an MCP server. There are a couple wa
 #### MCP Inspector
 If you just want to inspect what is exposed, I like to use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector).
 
-```
+```bash
 npx @modelcontextprotocol/inspector
 ```
 
