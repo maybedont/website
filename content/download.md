@@ -12,7 +12,7 @@ The latest version is `v0.1.4` - you can download a binary for your architecture
 
 ### Quickstart
 
-After you extract the downloaded file, you should see a binary, and a config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
+After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
 
 ```bash
 # An open AI api key for rule validations
@@ -41,14 +41,14 @@ The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.4`
 podman run \
   -e MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION \
   -e OPENAI_API_KEY \
-  -v $(pwd)/config.yaml:/config.yaml \
+  -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
   -p 8080:8080 \
   ghcr.io/maybedont/maybe-dont:v0.1.4 start
 ```
 
 NOTE:
-- Make sure the config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
-- You may want to change the config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
+- Make sure the gateway-config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
+- You may want to change the gateway-config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
 
 ## Configuration
 
@@ -60,7 +60,7 @@ The MCP Security Gateway acts as a transparent middleware between MCP clients an
 
 ### Server Configuration
 
-The server configuration defines how the gateway accepts connections from MCP clients.
+The server configuration defines how the gateway accepts connections from MCP clients. It must be in a file called `gateway-config.yaml` which is located in the `--config-path`. The path defaults to either the current directory `./` or `~/.maybe-dont/`
 
 #### Basic Server Settings
 
@@ -124,7 +124,7 @@ Execute a local process as the MCP server:
 client:
   type: stdio
   command: "./my-mcp-server"
-  command_args: ["--config", "server-config.yaml"]
+  command_args: ["run"]
 ```
 
 #### 2. HTTP Client
