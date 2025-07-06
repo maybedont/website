@@ -2,28 +2,50 @@
 title: Download
 ---
 
-## Try The Gateway
+## Run The Gateway
 
-### Binary
+### Download The Binary
 
 The latest version is `v0.1.3` - you can download a binary for your architecture below:
 
 {{< list-files-for-version version = v0.1.3 >}}
 
+### Quickstart
+
+After you extract the downloaded file, you should see a binary, and a config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
+
+```
+export OPENAI_API_KEY="Insert your API key here for AI rule validations"
+export MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$GITHUB_TOKEN" # This is your github token, which will be used to authenticate the gateway to the Github MCP server.
+```
+
+Now you can connect to the local gateway as an MCP server. There are a couple ways to do this.
+
+#### MCP Inspector
+If you just want to inspect what is exposed, I like to use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector).
+
+```
+npx @modelcontextprotocol/inspector
+```
+
+Then open your browser to http://localhost:6274, set the transport to `Streamable HTTP`, and put `http://localhost:8080/mcp` as the URL. Then you can go to the `Tools` tab and list the tools available, and even test them out.
+
 ### Container (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.3`. You can run with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.3`. You can run it with something like:
 
 ```bash
 podman run \
-  -e MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$MCP_PROXY_CLIENT_HTTP_HEADERS_AUTHORIZATION" \
-  -e OPENAI_API_KEY="$OPENAI_API_KEY" \
+  -e MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION \
+  -e OPENAI_API_KEY \
   -v $(pwd)/config.yaml:/config.yaml \
   -p 8080:8080 \
   ghcr.io/maybedont/maybe-dont:v0.1.3 start
 ```
 
-NOTE: Make sure the config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
+NOTE:
+- Make sure the config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
+- You may want to change the config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
 
 ## Configuration
 
@@ -31,7 +53,7 @@ This guide explains how to configure both the client and server portions of the 
 
 ### Overview
 
-The MCP Security Gateway acts as a transparent middleware between MCP clients and servers, enforcing security policies and providing audit logging. Configuration is managed through YAML files with support for environment variables and command-line overrides.
+The MCP Security Gateway acts as a transparent middleware between MCP clients and servers, enforcing security policies and providing audit logging. Configuration is managed through YAML files with support for select environment variables and command-line overrides.
 
 ### Server Configuration
 
@@ -39,31 +61,20 @@ The server configuration defines how the gateway accepts connections from MCP cl
 
 #### Basic Server Settings
 
-```yaml
-server:
-  # Server type: stdio, http, or sse
-  type: sse
-
-  # Address to listen on (for http/sse)
-  listen_addr: "127.0.0.1:8080"
-
-  # Logging configuration
-  log_level: "info"  # debug, info, warn, error
-  log_format: "json" # json or text
-```
-
 ### Server Types
 
 #### 1. STDIO Server
 For direct process communication:
+
 ```yaml
 server:
   type: stdio
-  # No listen_addr needed for stdio
 ```
 
 #### 2. HTTP Server
+
 For HTTP-based MCP communication:
+
 ```yaml
 server:
   type: http
@@ -71,7 +82,7 @@ server:
 ```
 
 #### 3. SSE Server (Server-Sent Events)
-For real-time streaming communication:
+
 ```yaml
 server:
   type: sse
@@ -95,11 +106,11 @@ client:
   type: stdio
 
   # For stdio: command to execute
-  command: "./kubectl-ai"
-  command_args: ["--mcp-server"]
+  command: "uvx"
+  command_args: ["awslabs.aws-documentation-mcp-server@latest"]
 
   # For http/sse: downstream server URL
-  downstream_url: "http://localhost:9090"
+  # downstream_url: ""
 ```
 
 ### Client Types
@@ -248,8 +259,6 @@ rules:
 ```yaml
 server:
   type: stdio
-  log_level: debug
-  log_format: text
 
 client:
   type: stdio
@@ -264,7 +273,6 @@ ai_validation:
 
 audit:
   path: "audit.log"
-  format: json
 ```
 
 #### Example 2: Production HTTP Setup
@@ -273,8 +281,6 @@ audit:
 server:
   type: http
   listen_addr: "0.0.0.0:8080"
-  log_level: info
-  log_format: json
 
 client:
   type: http
@@ -291,10 +297,9 @@ ai_validation:
 
 audit:
   path: "/var/log/mcp-gateway/audit.log"
-  format: json
 ```
 
 ### Best Practices
 
-1. **Use environment variables for secrets** - Never hardcode API keys or tokens
+1. **Use environment variables for secrets** - Never hardcode API keys or tokens in your config unless it's stored as a secret.
 1. **Enable both CEL and AI validation** - Use CEL for deterministic rules and AI for complex scenarios
