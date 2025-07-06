@@ -1,3 +1,102 @@
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-bold-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-bold-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-bolditalic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-bolditalic-webfont.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-italic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-italic-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-light-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-light-webfont.woff") format("woff");
+    font-weight: light;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-lightitalic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-lightitalic-webfont.woff") format("woff");
+    font-weight: light;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-medium-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-medium-webfont.woff") format("woff");
+    font-weight: medium;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-mediumitalic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-mediumitalic-webfont.woff") format("woff");
+    font-weight: medium;
+    font-style: italic;
+
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-regular-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-regular-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-semibold-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-semibold-webfont.woff") format("woff");
+    font-weight: semibold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-semibolditalic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-semibolditalic-webfont.woff") format("woff");
+    font-weight: semibold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("/fonts/raleway-thin-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-thin-webfont.woff") format("woff");
+    font-weight: thin;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Semibold";
+    src: url("/fonts/raleway-thinitalic-webfont.woff2") format("woff2"),
+         url("/fonts/raleway-thinitalic-webfont.woff") format("woff");
+    font-weight: thin;
+    font-style: italic;
+}
+
+
+
 /* @link https://utopia.fyi/type/calculator?c=320,18,1.2,1240,20,1.25,7,1,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
 :root {
 	--step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
@@ -88,7 +187,7 @@
 }
 
 body {
-	font-family: serif;
+	font-family: Raleway, serif;
 	font-size: var(--text-size-base);
 }
 
