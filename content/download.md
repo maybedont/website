@@ -33,6 +33,36 @@ npx @modelcontextprotocol/inspector
 
 Then open your browser to http://localhost:6274, set the transport to `Streamable HTTP`, and put `http://localhost:8080/mcp` as the URL. Then you can go to the `Tools` tab and list the tools available, and even test them out.
 
+#### Claude Desktop
+
+**NOTE:** This requires the server type in the gateway-config.yaml to be stdio:
+
+```yaml
+server:
+  type: stdio
+```
+
+In this instance, we have the binary located in the user's `$HOME/bin`, and the config file located in `$HOME/.maybe-dont/gateway-config.yaml`.
+
+```json
+{
+  "mcpServers": {
+    "maybe-dont": {
+      "command": "/Users/user/bin/maybe-dont",
+      "args": [
+        "start",
+        "--config-path=/Users/user/.maybe-dont"
+      ],
+      "paths": ["/Users/user/bin"],
+      "env": {
+        "MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION": "Bearer Insert GITHUB_TOKEN",
+        "OPENAI_API_KEY": "Insert your openAI key"
+      }
+    }
+  }
+}
+```
+
 ### Container (Docker, Podman, etc.)
 
 The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.6`. You can run it with something like:
