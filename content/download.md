@@ -47,9 +47,8 @@ audit:
 
 In this instance, we have the binary and the config located in the user's Downloads directory on OSX (replace user with your username). You may need to click through some system prompts, and then approve the binary in the Security and Privacy settings.
 
-Here's the `claude_desktop_config.json`:
-
 ```json
+# claude_desktop_config.json
 {
   "mcpServers": {
     "maybe-dont": {
