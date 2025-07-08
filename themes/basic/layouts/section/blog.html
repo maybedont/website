@@ -1,0 +1,51 @@
+{{ define "main" }}
+<div class="container">
+    <header class="page-header">
+        <h1>{{ .Title }}</h1>
+        {{ with .Content }}
+        <div class="page-content">
+            {{ . }}
+        </div>
+        {{ end }}
+    </header>
+
+    <section class="blog-posts">
+        {{ $posts := where .Site.RegularPages "Section" "blog" }}
+        {{ $posts := $posts | first 10 }}
+        
+        {{ if $posts }}
+            <div class="posts-list">
+                {{ range $posts }}
+                <article class="post-item">
+                    <header class="post-header">
+                        <h2 class="post-title">
+                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                        </h2>
+                        {{ if .Params.subtitle }}
+                        <p class="post-subtitle">{{ .Params.subtitle }}</p>
+                        {{ end }}
+                        {{ if .Date }}
+                        <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                            {{ .Date.Format "January 2, 2006" }}
+                        </time>
+                        {{ end }}
+                    </header>
+                    
+                    {{ if .Summary }}
+                    <div class="post-summary">
+                        {{ .Summary }}
+                    </div>
+                    {{ end }}
+                    
+                    <footer class="post-footer">
+                        <a href="{{ .RelPermalink }}" class="read-more">Read more →</a>
+                    </footer>
+                </article>
+                {{ end }}
+            </div>
+        {{ else }}
+            <p>No blog posts found.</p>
+        {{ end }}
+    </section>
+</div>
+{{ end }}
