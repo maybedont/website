@@ -31,13 +31,13 @@
                 </p>
                 {{ end }}
                 
-                <p class="__meta cluster" data-cluster="end">
-                    {{ if .Date }}
+                {{ if .Date }}
+                <p class="__meta">
                     <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                        {{ .Date.Format "January 2, 2006" }}
+                        {{ .Date | time.Format ":date_long" }}
                     </time>
-                    {{ end }}
                 </p>
+                {{ end }}
             </article>
             {{ end }}
         {{ else }}

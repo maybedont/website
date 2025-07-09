@@ -1,9 +1,22 @@
 {{ define "main" }}
+<article class="stack">
   <hgroup>
     <h1>{{ .Title }}</h1>
     {{ if .Params.subtitle }}
-    <p class="__subtitle">{{ .Params.subtitle }}</p>
+    <p>{{ .Params.subtitle }}</p>
     {{ end }}
   </hgroup>
-  {{ .Content }}
+
+  {{ if .Date }}
+  <p class="__meta">
+      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+          {{ .Date | time.Format ":date_long" }}
+      </time>
+  </p>
+  {{ end }}
+
+  <div class="__content stack">
+    {{ .Content }}
+  </div>
+</article>
 {{ end }}

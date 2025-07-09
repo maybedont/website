@@ -106,6 +106,8 @@
 	--gutter-column: var(--gutter);
 	--gutter-row: var(--gutter);
 
+	--indent: 4ch;
+
 	--line--2: 40ch;
 	--line--1: 60ch;
 	--line-0: 80ch;
@@ -224,6 +226,14 @@ header nav ul {
 	padding-inline: 0 var(--gutter);
 }
 
+hr {
+	border: 0;
+	border-block-start: var(--border);
+	inline-size: 60%;
+	margin-block: var(--push-0);
+	margin-inline-start: var(--indent);
+}
+
 footer {
 	border-block-start: var(--border);
 	font-size: var(--text-size-small);
@@ -255,8 +265,17 @@ nav a[aria-current]::before {
 	background-color: currentColor;
 }
 
+ol,
+ul {
+	padding-inline-start: var(--indent);
+}
+
 p {
 	max-inline-size: var(--line-0);
+}
+
+p + p {
+	margin-block-start: var(--push-0);
 }
 
 pre {
