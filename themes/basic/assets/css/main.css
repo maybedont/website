@@ -283,26 +283,30 @@ ul {
 	display: flex;
 }
 
-.cover {
+.spread-out {
 	display: flex;
 	flex-direction: column;
 	min-block-size: 100vh;
 	padding: var(--gutter);
 }
 
-.cover > * {
+.spread-out > * {
 	margin-block: var(--gutter);
 }
 
-.cover > :first-child:not(.__principal-element) {
+.spread-out > :first-child:not(.__principal-element) {
 	margin-block-start: 0;
 }
 
-.cover > .__principal-element {
-	margin-block: auto;
+.spread-out > .__principal-element {
+	margin-block-end: auto;
 }
 
-.cover > :last-child:not(.__principal-element) {
+.spread-out > .__principal-element[data-justify="center"] {
+	margin-block-start: auto;
+}
+
+.spread-out > :last-child:not(.__principal-element) {
 	margin-block-end: 0;
 }
 
