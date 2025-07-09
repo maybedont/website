@@ -3,11 +3,11 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="cover wrapper">
+<body class="limit-line-length stack">
   <header class="inline-to-block" data-style="border border-between border-end">
     {{ partial "header.html" . }}
   </header>
-  <main class="__principal-element">
+  <main data-stack="push-next">
     {{ block "main" . }}{{ end }}
   </main>
   <footer>

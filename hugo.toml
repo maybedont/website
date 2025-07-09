@@ -1,6 +1,6 @@
 baseURL = 'https://maybedont.ai/'
 languageCode = 'en-us'
-title = "Maybe Don't, AI"
+title = "Maybe Don't AI"
 theme = 'basic'
 
 disableKinds = ["taxonomy", "term"]
