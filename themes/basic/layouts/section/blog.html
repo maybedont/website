@@ -5,7 +5,7 @@
     </hgroup>
 
     {{ with .Content }}
-    <p class="wrapper">
+    <p class="limit-line-length">
         {{ . }}
     </p>
     {{ end }}
@@ -26,7 +26,7 @@
                 </hgroup>
                 
                 {{ if .Summary }}
-                <p class="__content wrapper">
+                <p class="__content limit-line-length">
                     {{ .Summary }}
                 </p>
                 {{ end }}

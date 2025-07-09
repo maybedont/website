@@ -341,6 +341,12 @@ ul {
 	border-block-end: var(--border);
 }
 
+.limit-line-length {
+	box-sizing: content-box;
+	margin-inline: auto;
+	max-inline-size: var(--line, var(--line-0));
+}
+
 .stack {
 	display: flex;
 	flex-direction: column;
@@ -357,10 +363,4 @@ ul {
 
 .stack > * + * {
 	margin-block-start: var(--stack-push, 1.5rem);
-}
-
-.wrapper {
-	box-sizing: content-box;
-	margin-inline: auto;
-	max-inline-size: var(--line, var(--line-0));
 }
