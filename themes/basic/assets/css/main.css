@@ -148,6 +148,7 @@ body {
 
 a:not([class]) {
 	color: inherit;
+	text-decoration-thickness: calc(0.5 * var(--underline-thickness));
 }
 
 a:not([class]):hover,
@@ -293,8 +294,8 @@ ul {
 
 .call-to-action {
 	border-inline-start: var(--border-strong);
-	margin-block: var(--gutter-column);
-	margin-inline-start: var(--gutter-column);
+	margin-block: var(--gutter-row);
+	margin-inline-start: var(--indent);
 	padding: var(--gutter);
 }
 
