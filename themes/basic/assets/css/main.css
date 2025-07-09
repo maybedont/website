@@ -248,6 +248,7 @@ nav a[aria-current]::before {
 
 p {
 	max-inline-size: var(--line-0);
+	margin-block-end: var(--space-s);
 }
 
 pre {
