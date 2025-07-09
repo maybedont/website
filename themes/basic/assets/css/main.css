@@ -337,3 +337,17 @@ ul {
 	margin-inline: auto;
 	max-inline-size: var(--line, var(--line-0));
 }
+
+/* Reduce spacing for blog pages */
+body.cover .cover > main {
+	margin-block: var(--space-s);
+}
+
+/* Blog post styling */
+.post-summary {
+	font-style: italic;
+}
+
+.post-subtitle {
+	font-weight: bold;
+}
