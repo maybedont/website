@@ -35,33 +35,38 @@ Then open your browser to http://localhost:6274, set the transport to `Streamabl
 
 #### Claude Desktop
 
-**NOTE:** This requires the server type in the gateway-config.yaml to be stdio:
+**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location:
 
 ```yaml
 server:
   type: stdio
+audit:
+  enabled: true
+  path: /Users/user/maybe-dont_0.1.6_Darwin_arm64/audit.log
 ```
 
-In this instance, we have the binary located in the user's `$HOME/bin`, and the config file located in `$HOME/.maybe-dont/gateway-config.yaml`.
+In this instance, we have the binary and the config located in the user's Downloads directory on OSX (replace user with your username). You may need to click through some system prompts, and then approve the binary in the Security and Privacy settings.
 
 ```json
+# claude_desktop_config.json
 {
   "mcpServers": {
     "maybe-dont": {
-      "command": "/Users/user/bin/maybe-dont",
+      "command": "/Users/user/Downloads/maybe-dont_0.1.6_Darwin_arm64/maybe-dont",
       "args": [
         "start",
-        "--config-path=/Users/user/.maybe-dont"
+        "--config-path=/Users/user/Downloads/maybe-dont_0.1.6_Darwin_arm64",
       ],
-      "paths": ["/Users/user/bin"],
       "env": {
-        "MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION": "Bearer Insert GITHUB_TOKEN",
+        "MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION": "Bearer <Insert GITHUB_TOKEN>",
         "OPENAI_API_KEY": "Insert your openAI key"
       }
     }
   }
 }
 ```
+
+Once you've updated the config json, you'll need to restart Claude Desktop.
 
 ### Container (Docker, Podman, etc.)
 
