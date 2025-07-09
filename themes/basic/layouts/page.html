@@ -1,9 +1,9 @@
 {{ define "main" }}
-  <header class="post-header">
+  <hgroup>
     <h1>{{ .Title }}</h1>
     {{ if .Params.subtitle }}
-    <p class="post-subtitle">{{ .Params.subtitle }}</p>
+    <p class="__subtitle">{{ .Params.subtitle }}</p>
     {{ end }}
-  </header>
+  </hgroup>
   {{ .Content }}
 {{ end }}

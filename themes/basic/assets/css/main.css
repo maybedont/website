@@ -153,7 +153,6 @@ a:not([class]):focus {
 h1 {
 	border-block-end: var(--border-strong);
 	font-size: var(--text-size-heading-1);
-	text-align: center;
 }
 
 h2,
@@ -335,6 +334,20 @@ ul {
 
 .inline-to-block[data-style~="border-end"] {
 	border-block-end: var(--border);
+}
+
+.stack {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.stack > * {
+	margin-block: 0;
+}
+
+.stack > * + * {
+	margin-block-start: var(--space, 1.5rem);
 }
 
 .wrapper {

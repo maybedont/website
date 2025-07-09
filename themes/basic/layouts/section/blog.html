@@ -1,15 +1,16 @@
 {{ define "main" }}
-<div class="container">
-    <header class="page-header">
+<div class="stack">
+    <hgroup>
         <h1>{{ .Title }}</h1>
-        {{ with .Content }}
-        <div class="page-content">
-            {{ . }}
-        </div>
-        {{ end }}
-    </header>
+    </hgroup>
 
-    <section class="blog-posts">
+    {{ with .Content }}
+    <p class="wrapper">
+        {{ . }}
+    </p>
+    {{ end }}
+
+    <section>
         {{ $posts := where .Site.RegularPages "Section" "blog" }}
         {{ $posts := $posts | first 10 }}
         
