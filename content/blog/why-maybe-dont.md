@@ -9,7 +9,13 @@ summary: |
 ---
 
 Backing out of my driveway last week, I told my 15-year-old son, "Run inside and grab some cash. Don’t come back until you have it." He had access. The house was open. But imagine this:
-He gets inside, can't find any cash. He looks around. Then, trying to follow the letter of the instruction, he grabs his mom’s engagement ring, pawns it for $2,000, jumps in the car, and says, "Here’s the cash you asked for." Technically correct. Totally ridiculous. This is exactly how modern AI agents behave.
+He gets inside, can't find any cash. He looks around. Then, trying to follow the letter of the instruction, he grabs his mom’s engagement ring, pawns it for $2,000, jumps in the car, and says, "Here’s the cash you asked for." 
+
+Technically correct.
+ 
+Totally ridiculous. 
+
+This is exactly how modern AI agents behave.
 
 ---
 
