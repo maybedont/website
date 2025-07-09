@@ -10,40 +10,36 @@
     </p>
     {{ end }}
 
-    <section>
-        {{ $posts := where .Site.RegularPages "Section" "blog" }}
-        {{ $posts := $posts | first 10 }}
+    <section class="stack">
+        {{ $posts := where .Site.RegularPages.ByDate.Reverse "Section" "blog" }}
         
         {{ if $posts }}
-            <div class="posts-list">
-                {{ range $posts }}
-                <article class="post-item">
-                    <header class="post-header">
-                        <h2 class="post-title">
-                            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                        </h2>
-                        {{ if .Params.subtitle }}
-                        <p class="post-subtitle">{{ .Params.subtitle }}</p>
-                        {{ end }}
-                    </header>
-                    
-                    {{ if .Summary }}
-                    <p class="post-summary">
-                        {{ .Summary }}
-                    </p>
+            {{ range $posts }}
+            <article class="stack">
+                <hgroup>
+                    <h2>
+                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    </h2>
+                    {{ if .Params.subtitle }}
+                    <p>{{ .Params.subtitle }}</p>
                     {{ end }}
-                    
-                    <p class="post-footer">
-                        {{ if .Date }}
-                        <time class="post-date" datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                            {{ .Date.Format "January 2, 2006" }}
-                        </time>
-                        {{ end }}
-                        <a href="{{ .RelPermalink }}" class="read-more" style="float: right;">Read more →</a>
-                    </p>
-                </article>
+                </hgroup>
+                
+                {{ if .Summary }}
+                <p class="__content wrapper">
+                    {{ .Summary }}
+                </p>
                 {{ end }}
-            </div>
+                
+                <p class="__meta cluster" data-cluster="end">
+                    {{ if .Date }}
+                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+                        {{ .Date.Format "January 2, 2006" }}
+                    </time>
+                    {{ end }}
+                </p>
+            </article>
+            {{ end }}
         {{ else }}
             <p>No blog posts found.</p>
         {{ end }}

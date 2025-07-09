@@ -150,6 +150,12 @@ a:not([class]):focus {
 	text-decoration-thickness: var(--underline-thickness);
 }
 
+article > .__meta {
+	--stack-push: var(--push--1);
+
+	font-size: var(--text-size-small);
+}
+
 h1 {
 	border-block-end: var(--border-strong);
 	font-size: var(--text-size-heading-1);
@@ -202,6 +208,10 @@ h5 + h6 {
 	margin-block-start: var(--push--1, 0.5em);
 }
 
+hgroup > p {
+	font-style: italic;
+}
+
 header > .__logo {
 	color: currentColor;
 	font-size: var(--text-size-header-logo);
@@ -247,7 +257,6 @@ nav a[aria-current]::before {
 
 p {
 	max-inline-size: var(--line-0);
-	margin-block-end: var(--space-s);
 }
 
 pre {
@@ -347,20 +356,11 @@ ul {
 }
 
 .stack > * + * {
-	margin-block-start: var(--space, 1.5rem);
+	margin-block-start: var(--stack-push, 1.5rem);
 }
 
 .wrapper {
 	box-sizing: content-box;
 	margin-inline: auto;
 	max-inline-size: var(--line, var(--line-0));
-}
-
-/* Blog post styling */
-.post-summary {
-	font-style: italic;
-}
-
-.post-subtitle {
-	font-weight: bold;
 }
