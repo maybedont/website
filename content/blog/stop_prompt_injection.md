@@ -8,7 +8,7 @@ summary: |
 ---
 **Stop Prompt Injection Before It Starts — Use Maybe Don’t AI**
 
-General Analysis just published a solid post on securing AI assistants built on Supabase with Managed Components Protocol (MCP). Their takeaway: *sanitize input before it hits your assistant.* Specifically, scan for imperative verbs, SQL syntax, and other injection triggers. It’s a simple, powerful idea: **block bad prompts at the edge.**
+General Analysis just published a [solid post on securing AI assistants built on Supabase](https://www.generalanalysis.com/blog/supabase-mcp-blog) with Model Context Protocol (MCP). Their takeaway: *sanitize input before it hits your assistant.* Specifically, scan for imperative verbs, SQL syntax, and other injection triggers. It’s a simple, powerful idea: **block bad prompts at the edge.**
 
 They recommend a lightweight wrapper around your MCP that inspects and filters input. Sound advice—and a good reminder that generative AI isn’t just about output; it’s about controlling *input* too.
 
@@ -18,8 +18,9 @@ We built Maybe Don’t to do what General Analysis is telling you to go build: i
 
 If you’re running assistants or any AI that takes user input, **you are exposed**. Prompt injection isn’t theoretical—it’s happening. If you’re building on MCP, you’re already ahead. But if you’re not filtering inputs, you’re not secure.
 
-**Call to action:**
-Don't wait to build your own defenses. Use the one that already works.
+
+Don't wait to build your own defenses. Use one that already works.
+
 **Download Maybe Don’t AI today.**
 
 [Get it here](https://www.maybedont.ai/download/), and give us feedback so we can make it better.
