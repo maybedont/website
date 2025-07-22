@@ -16,6 +16,12 @@ The latest version is `v0.2.0` - you can download a binary for your architecture
 
 {{< list-files-for-version version = v0.2.0 >}}
 
+**Not sure which file to download?**
+- **Mac (Apple Silicon):** `Darwin_arm64`
+- **Mac (Intel):** `Darwin_x86_64`
+- **Windows:** `Windows_x86_64` (most common)
+- **Linux:** `Linux_x86_64` (most common)
+
 ### Quickstart
 
 After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
