@@ -31,15 +31,12 @@ Before starting, you'll need:
 - **OpenAI account with billing enabled** - The gateway uses OpenAI's API which requires a payment method on file
   - If you want to skip AI validation, you can set `ai_validation.enabled: false` in the config
   - You can also use any openAI-compatible api, but you'll need to override the URL via config
-- A [Get GitHub Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+- A [**GitHub Token**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
   - The quickstart config uses the Github MCP server, which requires a token to authenticate
 
 ### Quickstart
 
-After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
-
-**Need help getting these keys?**
-- [Get OpenAI API Key](https://platform.openai.com/docs/quickstart) - [Get GitHub Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate, which we will export as [environment variables](https://en.wikipedia.org/wiki/Environment_variable) to our shell:
 
 ```bash
 # An open AI api key for rule validations
@@ -49,9 +46,12 @@ export OPENAI_API_KEY="Insert Key Here"
 export GITHUB_TOKEN="Insert Token Here"
 ```
 
+_Need help getting these keys?_
+- [_Get OpenAI API Key_](https://platform.openai.com/docs/quickstart) - [_Get GitHub Token_](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
 Now you can connect to the local gateway as an MCP server. There are a couple ways to do this.
 
-#### MCP Inspector
+#### 1. MCP Inspector
 If you just want to inspect what is exposed, I like to use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector).
 
 ```bash
@@ -60,9 +60,9 @@ npx @modelcontextprotocol/inspector
 
 Then open your browser to http://localhost:6274, set the transport to `Streamable HTTP`, and put `http://localhost:8080/mcp` as the URL. Then you can go to the `Tools` tab and list the tools available, and even test them out.
 
-#### Claude Desktop
+#### 2. Claude Desktop
 
-**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location and use the new downstream_mcp_servers structure:
+**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location:
 
 ```yaml
 server:
