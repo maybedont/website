@@ -12,9 +12,9 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 ### Download The Binary
 
-The latest version is `v0.3.0` - you can download a binary for your architecture below:
+The latest version is `v0.3.1` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.3.0 >}}
+{{< list-files-for-version version = v0.3.1 >}}
 
 **Not sure which file to download?**
 - **Mac (Apple Silicon):** `Darwin_arm64` (most common)
@@ -78,7 +78,7 @@ downstream_mcp_servers:
 
 audit:
   enabled: true
-  path: /Users/user/maybe-dont_0.3.0_Darwin_arm64/audit.log
+  path: /Users/user/maybe-dont_0.3.1_Darwin_arm64/audit.log
 ```
 
 In this instance, we have the binary and the config located in the user's Downloads directory on OSX (replace user with your username). You may need to click through some system prompts, and then approve the binary in the Security and Privacy settings.
@@ -88,10 +88,10 @@ In this instance, we have the binary and the config located in the user's Downlo
 {
   "mcpServers": {
     "maybe-dont": {
-      "command": "/Users/user/Downloads/maybe-dont_0.3.0_Darwin_arm64/maybe-dont",
+      "command": "/Users/user/Downloads/maybe-dont_0.3.1_Darwin_arm64/maybe-dont",
       "args": [
         "start",
-        "--config-path=/Users/user/Downloads/maybe-dont_0.3.0_Darwin_arm64"
+        "--config-path=/Users/user/Downloads/maybe-dont_0.3.1_Darwin_arm64"
       ],
       "env": {
         "GITHUB_TOKEN": "<Insert GITHUB_TOKEN>",
@@ -106,7 +106,7 @@ Once you've updated the config json, you'll need to restart Claude Desktop.
 
 ### Container (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.3.0`. You can run it with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.3.1`. You can run it with something like:
 
 ```bash
 podman run \
@@ -114,7 +114,7 @@ podman run \
   -e OPENAI_API_KEY \
   -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.3.0 start
+  ghcr.io/maybedont/maybe-dont:v0.3.1 start
 ```
 
 NOTE:
