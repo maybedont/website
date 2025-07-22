@@ -6,9 +6,9 @@ title: Download
 
 ### Download The Binary
 
-The latest version is `v0.1.6` - you can download a binary for your architecture below:
+The latest version is `v0.2.0` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.1.6 >}}
+{{< list-files-for-version version = v0.2.0 >}}
 
 ### Quickstart
 
@@ -70,7 +70,7 @@ Once you've updated the config json, you'll need to restart Claude Desktop.
 
 ### Container (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.1.6`. You can run it with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.2.0`. You can run it with something like:
 
 ```bash
 podman run \
@@ -78,7 +78,7 @@ podman run \
   -e OPENAI_API_KEY \
   -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.1.6 start
+  ghcr.io/maybedont/maybe-dont:v0.2.0 start
 ```
 
 NOTE:
