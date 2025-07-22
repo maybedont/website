@@ -18,8 +18,8 @@ After you extract the downloaded file, you should see a binary, and a gateway-co
 # An open AI api key for rule validations
 export OPENAI_API_KEY="Insert Key Here"
 
-# This is your github token, which will be used to authenticate the gateway to the Github MCP server.
-export MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION="$GITHUB_TOKEN"
+# This is your github token, which will be used to authenticate to downstream MCP servers
+export GITHUB_TOKEN="Insert Token Here"
 ```
 
 Now you can connect to the local gateway as an MCP server. There are a couple ways to do this.
@@ -35,14 +35,23 @@ Then open your browser to http://localhost:6274, set the transport to `Streamabl
 
 #### Claude Desktop
 
-**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location:
+**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location and use the new downstream_mcp_servers structure:
 
 ```yaml
 server:
   type: stdio
+
+downstream_mcp_servers:
+  github:
+    type: http
+    url: "https://api.githubcopilot.com/mcp/"
+    http:
+      headers:
+        Authorization: "Bearer ${GITHUB_TOKEN}"
+
 audit:
   enabled: true
-  path: /Users/user/maybe-dont_0.1.6_Darwin_arm64/audit.log
+  path: /Users/user/maybe-dont_0.2.0_Darwin_arm64/audit.log
 ```
 
 In this instance, we have the binary and the config located in the user's Downloads directory on OSX (replace user with your username). You may need to click through some system prompts, and then approve the binary in the Security and Privacy settings.
@@ -52,13 +61,13 @@ In this instance, we have the binary and the config located in the user's Downlo
 {
   "mcpServers": {
     "maybe-dont": {
-      "command": "/Users/user/Downloads/maybe-dont_0.1.6_Darwin_arm64/maybe-dont",
+      "command": "/Users/user/Downloads/maybe-dont_0.2.0_Darwin_arm64/maybe-dont",
       "args": [
         "start",
-        "--config-path=/Users/user/Downloads/maybe-dont_0.1.6_Darwin_arm64",
+        "--config-path=/Users/user/Downloads/maybe-dont_0.2.0_Darwin_arm64"
       ],
       "env": {
-        "MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION": "Bearer <Insert GITHUB_TOKEN>",
+        "GITHUB_TOKEN": "<Insert GITHUB_TOKEN>",
         "OPENAI_API_KEY": "Insert your openAI key"
       }
     }
@@ -74,7 +83,7 @@ The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.2.0`
 
 ```bash
 podman run \
-  -e MCP_GATEWAY_CLIENT_HTTP_HEADERS_AUTHORIZATION \
+  -e GITHUB_TOKEN \
   -e OPENAI_API_KEY \
   -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
   -p 8080:8080 \
@@ -132,54 +141,62 @@ server:
       key_file: "/path/to/key.pem"
 ```
 
-## Client Configuration
+## Downstream MCP Servers Configuration
 
-The client configuration defines how the gateway connects to downstream MCP servers.
+The downstream MCP servers configuration defines how the gateway connects to one or more MCP servers. You can configure multiple servers with different transport types and settings.
 
-### Basic Client Settings
+### Basic Configuration Structure
 
 ```yaml
-client:
-  # Transport type: stdio, sse, or http
-  type: stdio
-
-  # For stdio: command to execute
-  command: "uvx"
-  command_args: ["awslabs.aws-documentation-mcp-server@latest"]
-
-  # For http/sse: downstream server URL
-  # downstream_url: ""
+downstream_mcp_servers:
+  github:
+    type: http # stdio, sse, or http
+    url: "https://api.githubcopilot.com/mcp/"
+    http:
+      headers:
+        Authorization: "Bearer ${GITHUB_TOKEN}"
+  aws-docs:
+    type: stdio
+    command: "uvx"
+    args: ["awslabs.aws-documentation-mcp-server@latest"]
 ```
 
-### Client Types
+### Server Types
 
-#### 1. STDIO Client
+#### 1. STDIO Server
 Execute a local process as the MCP server:
 ```yaml
-client:
-  type: stdio
-  command: "./my-mcp-server"
-  command_args: ["run"]
+downstream_mcp_servers:
+  my-local-server:
+    type: stdio
+    command: "./my-mcp-server"
+    args: ["run", "--verbose"]
 ```
 
-#### 2. HTTP Client
+#### 2. HTTP Server
 Connect to an HTTP-based MCP server:
 ```yaml
-client:
-  type: http
-  downstream_url: "https://api.example.com/mcp"
+downstream_mcp_servers:
+  api-server:
+    type: http
+    url: "https://api.example.com/mcp"
+    http:
+      headers:
+        Authorization: "Bearer ${API_TOKEN}"
+        X-Custom-Header: "value"
 ```
 
-#### 3. SSE Client
+#### 3. SSE Server
 Connect to an SSE-based MCP server:
 ```yaml
-client:
-  type: sse
-  downstream_url: "https://api.example.com/mcp/stream"
-  sse:
-    headers:
-      Authorization: "Bearer ${API_TOKEN}"
-      X-Custom-Header: "value"
+downstream_mcp_servers:
+  streaming-server:
+    type: sse
+    url: "https://api.example.com/mcp/stream"
+    sse:
+      headers:
+        Authorization: "Bearer ${API_TOKEN}"
+        X-Custom-Header: "value"
 ```
 
 ### Policy Configuration
@@ -298,10 +315,11 @@ rules:
 server:
   type: stdio
 
-client:
-  type: stdio
-  command: "./kubectl-ai"
-  command_args: ["--mcp-server"]
+downstream_mcp_servers:
+  kubectl-ai:
+    type: stdio
+    command: "./kubectl-ai"
+    args: ["--mcp-server"]
 
 policy_validation:
   enabled: true
@@ -313,16 +331,30 @@ audit:
   path: "audit.log"
 ```
 
-#### Example 2: Production HTTP Setup
+#### Example 2: Production HTTP Setup with Multiple Servers
 
 ```yaml
 server:
   type: http
   listen_addr: "0.0.0.0:8080"
 
-client:
-  type: http
-  downstream_url: "https://api.example.com/mcp"
+downstream_mcp_servers:
+  github:
+    type: http
+    url: "https://api.githubcopilot.com/mcp/"
+    http:
+      headers:
+        Authorization: "Bearer ${GITHUB_TOKEN}"
+  aws-docs:
+    type: stdio
+    command: "uvx"
+    args: ["awslabs.aws-documentation-mcp-server@latest"]
+  api-server:
+    type: http
+    url: "https://api.example.com/mcp"
+    http:
+      headers:
+        Authorization: "Bearer ${API_TOKEN}"
 
 policy_validation:
   enabled: true
