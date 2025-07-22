@@ -17,10 +17,22 @@ The latest version is `v0.2.0` - you can download a binary for your architecture
 {{< list-files-for-version version = v0.2.0 >}}
 
 **Not sure which file to download?**
-- **Mac (Apple Silicon):** `Darwin_arm64`
+- **Mac (Apple Silicon):** `Darwin_arm64` (most common)
 - **Mac (Intel):** `Darwin_x86_64`
-- **Windows:** `Windows_x86_64` (most common)
-- **Linux:** `Linux_x86_64` (most common)
+- **Windows:** `Windows_x86_64`
+- **Linux:** `Linux_x86_64`
+
+### Quickstart Prerequisites
+
+Before starting, you'll need:
+- **uvx** (Python package runner) - Install with: `pip install uvx` or `pipx install uvx`
+  - The quickstart config includes an AWS documentation server that requires uvx to run
+  - You can remove the downstream aws-docs if you wish to skip this.
+- **OpenAI account with billing enabled** - The gateway uses OpenAI's API which requires a payment method on file
+  - If you want to skip AI validation, you can set `ai_validation.enabled: false` in the config
+  - You can also use any openAI-compatible api, but you'll need to override the URL via config
+- A [Get GitHub Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+  - The quickstart config uses the Github MCP server, which requires a token to authenticate
 
 ### Quickstart
 
