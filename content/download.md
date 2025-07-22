@@ -26,6 +26,9 @@ The latest version is `v0.2.0` - you can download a binary for your architecture
 
 After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate:
 
+**Need help getting these keys?**
+- [Get OpenAI API Key](https://platform.openai.com/docs/quickstart) - [Get GitHub Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+
 ```bash
 # An open AI api key for rule validations
 export OPENAI_API_KEY="Insert Key Here"
