@@ -8,7 +8,7 @@ summary: |
 ---
 # Introducing Multi-Client Support in Maybe Don't: Seamlessly Connect to Multiple MCP Servers
 
-We’re excited to introduce a major enhancement to [Maybe Don’t AI's MCP Gateway](https://maybedont.ai): **multi-client support for connecting to multiple MCP servers in parallel**. This new feature is designed to help organizations scale their use of the Model Context Protocol (MCP) securely and efficiently.
+We’re excited to introduce a major milestone in [Maybe Don’t AI's MCP Gateway](https://maybedont.ai): **multi-client support for connecting to multiple MCP servers in parallel**. This key feature (an essential piece of a gateway) is designed to help organizations scale their use of the Model Context Protocol (MCP) securely and efficiently.
 
 ## What is Maybe Don’t?
 
