@@ -39,7 +39,7 @@ This kind of failure is personal to us. Maybe Don’t AI was born out of a diffe
 
 That was the wake-up call.
 
-We built Maybe Don’t to ensure AI (and anyone directing it) doesn’t get to act unchecked. Whether it’s an agent or a human attacker, our product—**MCP Gateway**—steps in and says: *“Maybe don’t.”*
+We built Maybe Don’t to ensure AI (and anyone directing it) doesn’t get to act unchecked. Whether it’s an agent or a human attacker, our product—**MCP Gateway**—steps in and says: *“Maybe Don’t.”*
 
 ---
 
@@ -47,9 +47,9 @@ We built Maybe Don’t to ensure AI (and anyone directing it) doesn’t get to a
 
 The Amazon Q breach isn’t just a headline. It’s a warning. If your AI agents can execute terminal commands, touch your infrastructure, or modify production systems—without a third-party guardrail—you’re gambling.
 
-MCP Gateway is that guardrail. It evaluates what agents are trying to do and who is telling them to do it. It catches malicious intent before it hits the system—whether that intent came from an AI or a real human masked behind a PR.
+Maybe Don't's MCP Gateway is that guardrail. It evaluates what agents are doing and who is telling them to do it. It catches malicious intent before it hits the system—whether that intent came from an AI or a real human masked behind a PR.
 
-The commands that hacker buried in Q’s AI system? The ones designed to wipe a machine clean? They would’ve never made it past Maybe Don’t.
+The commands that hacker buried in Q’s AI system? The ones designed to wipe a machine clean? Shoulud never make it past Maybe Don’t.
 
 ---
 
