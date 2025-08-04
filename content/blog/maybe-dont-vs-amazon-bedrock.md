@@ -1,12 +1,12 @@
 ---
-title: Maybe Don’t AI vs. Amazon Bedrock
+title: Maybe Don’t AI vs. Amazon Bedrock Guardrails
 subtitle: Guardrails at Different Layers of the Stack
 date: 2025-08-04
 draft: false
 summary: |
-  Amazon Bedrock secures model training. Maybe Don’t AI governs what AI does—intervening on risky actions at runtime, not just risky thoughts at build time.
+  Amazon Bedrock guardrails secure model training. Maybe Don’t AI governs what AI does—intervening on risky actions at runtime, not just risky thoughts at build time.
 ---
-**Maybe Don’t AI vs. Amazon Bedrock: Guardrails at Different Layers of the Stack**
+**Maybe Don’t AI vs. Amazon Bedrock Guardrails: Guardrails at Different Layers of the Stack**
 
 Recently we had a prospect ask about how Maybe Don’t AI is differentiated from Amazon Bedrock’s guardrails so we did this brief write up to address the question for others.
 
