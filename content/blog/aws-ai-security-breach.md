@@ -1,6 +1,6 @@
 ---
-title: "Title: Even Amazon Just Got Burned by an AI Security Breach—Here’s How to Make Sure You Don’t"
-subtitle: "Human in the loop is still insufficnet"
+title: "Even Amazon Just Got Burned by an AI Security Breach—Here’s How to Make Sure You Don’t"
+subtitle: "Human in the loop is still insuffcient"
 date: 2025-07-26
 draft: false
 summary: |
