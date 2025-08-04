@@ -1,6 +1,6 @@
 ---
-title: “Maybe Don’t AI vs. Amazon Bedrock”
-subtitle: “Guardrails at Different Layers of the Stack”
+title: Maybe Don’t AI vs. Amazon Bedrock
+subtitle: Guardrails at Different Layers of the Stack
 date: 2025-08-04
 draft: false
 summary: |
