@@ -2,15 +2,18 @@
 title: Home
 ---
 
-## MCP Security
+## The World's First Non-Deterministic Policy Engine
+### For AI Agent/MCP Security
 
-A new protocol requires a new policy
+AI agents don't follow carefully constructed scripts. Your policies shouldn't depend on them either.
 
 ### De-risk AI. Avoid disaster.
 
 In the time it took you to read this there was a major security breach caused by an AI agent
 
 ...we just don't know about it, yet.
+
+AI agents are increasingly acting on our behalf, but far too often they make incredibly costly mistakes.
 
 ### Intercept. Analyze. Control.
 
@@ -26,9 +29,7 @@ Plug-and-play APIs. Start intercepting AI activity in minutes, not months. See e
 
 ### Don't be the breach story.
 
-Try it out during our early access phase, and please send us all the feedback.
+Maybe Don't AI uses a combination of AI policy, a traditional policy engine, human in the loop (where necessary) and anomaly detection to give you confidence with your AI agents.
 
-Maybe Don't AI uses a combination of ai detection, a policy engine, human in the loop (where necessary) and anomaly detection to give you confidence with your ai agents.
-
-[Talk to a founder to learn more](https://zcal.co/kendallm/30min)
+[Talk to a founder to learn more](https://cal.com/kmillermd/30min)
 {.call-to-action}
