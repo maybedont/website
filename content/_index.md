@@ -2,8 +2,8 @@
 title: Home
 ---
 
-## The World's First Non-Deterministic Policy Engine
-### For AI Agent/MCP Security
+## Avoid AI Agent Footguns
+### Use AI Agents/MCP With Confidence
 
 AI agents don't follow carefully constructed scripts. Your policies shouldn't depend on them either.
 
