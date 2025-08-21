@@ -1,7 +1,7 @@
 ---
 title: When AI Books Your Flight From Denver to Seattle by Way of Dubai
 subtitle: The future of AI has you in control
-date: 2025-08-021
+date: 2025-08-21
 draft: false
 summary: |
   AI agents can book flights & manage your life, but without guardrails they'll make costly mistakes. Maybe Don't AI puts YOU in control.
