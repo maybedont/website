@@ -1,7 +1,7 @@
 ---
 title: Why AI Needs Independent Oversight
 subtitle: The New York Times Just Made Our Case
-date: 2025-08-21
+date: 2025-09-02
 draft: false
 summary: |
   The New York Times validates our thesis: AI's autonomy problem requires independent oversight systems like Maybe Don't AI.
