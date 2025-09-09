@@ -91,4 +91,10 @@ The system continuously evaluates each proposed action against these hierarchica
 ## Beyond Today's Implementation
 
 Obviously, these rules will need substantial evolution as we develop more sophisticated robotics and AI systems. Current implementations handle digital actions and basic physical controls, but true robotic agents will require far more nuanced ethical reasoning.
+
 For now, though, this gives us an amusing, working defense against today's AI risks—turning science fiction wisdom into non-production-ready (no seriously, please don't use these rules in production) safety.
+
+Yes, you could actually use this as your AI rules in Maybe Don't AI today in production.
+No, you probably shouldn't.
+
+But Maybe Don't AI's real guardrails *are* helpful today for keeping your engineers safe from shooting themselves in the foot when leveraging AI to accomplish real tasks in the world. Click download above and get started with our MCP Gateway today.
