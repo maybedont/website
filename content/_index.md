@@ -2,8 +2,8 @@
 title: Home
 ---
 
-## Avoid AI Agent Footguns
-### Use AI Agents/MCP With Confidence
+## Your Engineers are Already Using MCP
+### Don't Let Them Shoot Themselves in the Foot
 
 AI agents don't follow carefully constructed scripts. Your policies shouldn't depend on them either.
 
