@@ -31,6 +31,7 @@ Before starting, you'll need:
 - **OpenAI account with billing enabled** - The gateway uses OpenAI's API which requires a payment method on file
   - If you want to skip AI validation, you can set `ai_validation.enabled: false` in the config
   - You can also use any openAI-compatible api, but you'll need to override the URL via config
+  - Currently we find that OpenAI's API is much more reliable for running checks than Anthropic
 - A [**GitHub Token**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
   - The quickstart config uses the Github MCP server, which requires a token to authenticate
 
