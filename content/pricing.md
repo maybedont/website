@@ -6,7 +6,7 @@ title: Pricing
 
 Choose the plan that fits your organization's needs. All plans include our core security features with real-time monitoring and intelligent blocking.
 
-### Open Source
+### Free Version
 **Free**
 - Community support
 - Basic policy validation
@@ -14,27 +14,23 @@ Choose the plan that fits your organization's needs. All plans include our core 
 - Self-hosted deployment
 - Perfect for individual developers and small teams
 
-[Download Open Source Version](/download/)
-{.call-to-action}
+[Download Free Version Today](/download/)
 
 ### Professional
-**Contact for Pricing**
-- Everything in Open Source
+**$500/mo**
+- Everything in Free Version
 - Priority support
-- Advanced AI policy validation
-- Custom rule development
 - Integration assistance
-- SLA guarantees
+- Access to SOC2 Report
 
 ### Enterprise
 **Contact for Pricing**
 - Everything in Professional
+- Custom rule development
 - Dedicated support team
 - Custom integrations
-- On-premises deployment options
 - Advanced compliance features
 - Training and onboarding
-- Multi-tenant support
 
 ## Why Choose Maybe Don't AI?
 
@@ -52,4 +48,4 @@ Maybe Don't AI uses a combination of AI policy, a traditional policy engine, hum
 [Talk to a founder to learn more](https://cal.com/kmillermd/30min)
 {.call-to-action}
 
-Or start with our [open source version](/download/) today.
+Or start with our [free version](/download/) today.
