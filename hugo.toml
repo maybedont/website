@@ -41,7 +41,7 @@ theme = 'basic'
 # Social media links
 [params]
   [params.social]
-    linkedin = "https://www.linkedin.com/company/maybe-dont-ai"
+    linkedin = "https://www.linkedin.com/company/maybe-don-t-ai/"
 
 disableKinds = ["taxonomy", "term"]
 
