@@ -1,1 +1,15 @@
-<p>©&nbsp;2025 Maybe Don't, Inc. All rights reserved.</p>
+<div class="footer-content">
+  <div class="footer-section">
+    <p>© 2025 Maybe Don't, AI, All rights reserved.</p>
+  </div>
+  
+  <div class="footer-section footer-legal">
+    {{ partial "menu.html" (dict "menuID" "footer" "page" .) }}
+  </div>
+  
+  <div class="footer-section footer-social">
+    {{ with site.Params.social.linkedin }}
+      <a href="{{ . }}" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+    {{ end }}
+  </div>
+</div>

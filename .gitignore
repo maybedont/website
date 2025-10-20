@@ -8,3 +8,7 @@ hugo_stats.json
 
 # Temporary lock file while building
 .hugo_build.lock
+
+# Server logs
+server.log
+*.log
