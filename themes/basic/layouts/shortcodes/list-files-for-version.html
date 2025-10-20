@@ -1,0 +1,12 @@
+{{ $version     := .Get "version" }}
+{{ $filepath := printf "/static/download/%s" $version }}
+{{ $files    := readDir $filepath }}
+{{ if (fileExists $filepath)}}
+<div>
+    <ul>
+    {{- range $files }}
+    <li><a href=/download/{{ $version }}/{{ .Name }}>{{ .Name }}</a></li>
+    {{- end }}
+    </ul>
+</div>
+{{ end }}
