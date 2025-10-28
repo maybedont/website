@@ -3,11 +3,9 @@
 <head>
   {{ partial "head.html" . }}
 </head>
-<body class="limit-line-length stack">
-  <header class="inline-to-block" data-style="border border-between border-end">
-    {{ partial "header.html" . }}
-  </header>
-  <main data-stack="push-next">
+<body>
+  {{ partial "header.html" . }}
+  <main>
     {{ block "main" . }}{{ end }}
   </main>
   <footer>

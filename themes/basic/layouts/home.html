@@ -1,5 +1,68 @@
 {{ define "main" }}
-  <h1 class="visually-hidden">{{ .Title }}</h1>
+<section class="hero-section">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-headline">
+        {{ .Params.hero.headline }}
+      </h1>
 
-  {{ .Content }}
+      <p class="hero-subheadline">
+        {{ .Params.hero.subheadline }}
+      </p>
+
+      <p class="hero-description">
+        {{ .Params.hero.description }}
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="{{ .Params.hero.cta_primary_url }}" class="cta-primary">
+          {{ .Params.hero.cta_primary_text }}
+        </a>
+        <a href="{{ .Params.hero.cta_secondary_url }}" class="cta-secondary">
+          {{ .Params.hero.cta_secondary_text }}
+        </a>
+      </div>
+
+      <div class="hero-key-message">
+        <p class="key-message-title">{{ .Params.hero.key_message_title }}</p>
+        <p class="key-message-text">
+          {{ .Params.hero.key_message_text }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="features-container">
+    <div class="features-wrapper">
+      <div class="features-header">
+        <h2 class="features-title">{{ .Params.features.title }}</h2>
+        <p class="features-subtitle">
+          {{ .Params.features.subtitle }}
+        </p>
+      </div>
+
+      <div class="features-grid">
+        {{ range .Params.features.items }}
+        <article class="feature-card">
+          <h3 class="feature-title">{{ .title }}</h3>
+          <p class="feature-description">
+            {{ .description }}
+          </p>
+        </article>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo-section">
+  <div class="demo-container">
+    <h2 class="demo-title">{{ .Params.demo.title }}</h2>
+    <div class="demo-video">
+      <iframe width="100%" height="600" src="https://www.youtube.com/embed/{{ .Params.demo.youtube_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>
 {{ end }}
