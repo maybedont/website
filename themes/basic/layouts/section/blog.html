@@ -1,48 +1,47 @@
 {{ define "main" }}
-<div class="stack">
-    <hgroup>
-        <h1>{{ .Title }}</h1>
-    </hgroup>
-
-    {{ with .Content }}
-    <p class="limit-line-length">
+<div class="content-page">
+  <div class="content-container">
+    <header class="content-header">
+      <h1 class="content-title">{{ .Title }}</h1>
+      {{ with .Content }}
+      <div class="content-intro">
         {{ . }}
-    </p>
-    {{ end }}
+      </div>
+      {{ end }}
+    </header>
 
-    <section class="stack">
-        {{ $posts := where .Site.RegularPages.ByDate.Reverse "Section" "blog" }}
-        
-        {{ if $posts }}
-            {{ range $posts }}
-            <article class="stack">
-                <hgroup>
-                    <h2>
-                        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                    </h2>
-                    {{ if .Params.subtitle }}
-                    <p>{{ .Params.subtitle }}</p>
-                    {{ end }}
-                </hgroup>
-                
-                {{ if .Summary }}
-                <p class="__content limit-line-length">
-                    {{ .Summary }}
-                </p>
-                {{ end }}
-                
-                {{ if .Date }}
-                <p class="__meta">
-                    <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-                        {{ .Date | time.Format ":date_long" }}
-                    </time>
-                </p>
-                {{ end }}
-            </article>
-            {{ end }}
-        {{ else }}
-            <p>No blog posts found.</p>
+    <section class="blog-list">
+      {{ $posts := where .Site.RegularPages.ByDate.Reverse "Section" "blog" }}
+
+      {{ if $posts }}
+        {{ range $posts }}
+        <article class="blog-post-card">
+          <h2 class="blog-post-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+          {{ if .Params.subtitle }}
+          <p class="blog-post-subtitle">{{ .Params.subtitle }}</p>
+          {{ end }}
+
+          {{ if .Summary }}
+          <p class="blog-post-summary">
+            {{ .Summary }}
+          </p>
+          {{ end }}
+
+          {{ if .Date }}
+          <p class="blog-post-meta">
+            <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+              {{ .Date | time.Format ":date_long" }}
+            </time>
+          </p>
+          {{ end }}
+        </article>
         {{ end }}
+      {{ else }}
+        <p>No blog posts found.</p>
+      {{ end }}
     </section>
+  </div>
 </div>
 {{ end }}

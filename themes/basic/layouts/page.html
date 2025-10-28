@@ -1,22 +1,25 @@
 {{ define "main" }}
-<article class="stack">
-  <hgroup>
-    <h1>{{ .Title }}</h1>
-    {{ if .Params.subtitle }}
-    <p>{{ .Params.subtitle }}</p>
-    {{ end }}
-  </hgroup>
+<div class="content-page">
+  <div class="content-container">
+    <article class="content-article">
+      <header class="content-header">
+        <h1 class="content-title">{{ .Title }}</h1>
+        {{ if .Params.subtitle }}
+        <p class="content-subtitle">{{ .Params.subtitle }}</p>
+        {{ end }}
+        {{ if .Date }}
+        <p class="content-meta">
+          <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+            {{ .Date | time.Format ":date_long" }}
+          </time>
+        </p>
+        {{ end }}
+      </header>
 
-  {{ if .Date }}
-  <p class="__meta">
-      <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
-          {{ .Date | time.Format ":date_long" }}
-      </time>
-  </p>
-  {{ end }}
-
-  <div class="__content stack">
-    {{ .Content }}
+      <div class="content-body">
+        {{ .Content }}
+      </div>
+    </article>
   </div>
-</article>
+</div>
 {{ end }}
