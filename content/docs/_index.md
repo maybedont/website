@@ -113,6 +113,35 @@ downstream_mcp_servers:
         X-Custom-Header: "value"
 ```
 
+### Pass-Through Authentication
+
+The gateway supports **pass-through authentication**, which allows you to extract credentials from incoming request headers and forward them to downstream servers. This is useful when you want different clients to use their own credentials rather than sharing a single set of credentials.
+
+**Example configuration:**
+
+```yaml
+downstream_mcp_servers:
+  # Pass-through authentication example
+  github-passthrough:
+    type: http
+    url: "https://api.githubcopilot.com/mcp/"
+    auth:
+      pass_through:
+        enabled: true
+        headers:
+          - source_header: "X-GitHub-Token"  # Extract from incoming request
+            target_header: "Authorization"   # Forward to downstream
+            format: "Bearer {value}"         # Optional formatting (default: raw value)
+```
+
+**How it works:**
+1. Client sends request with custom header (e.g., `X-GitHub-Token: ghp_abc123`)
+2. Gateway extracts the value from the source header
+3. Gateway formats it according to the `format` template (if specified)
+4. Gateway forwards it to the downstream server in the target header
+
+**Note:** Pass-through authentication only works with HTTP and SSE server types. It's not available for STDIO servers.
+
 ### Policy Configuration
 
 The gateway supports two types of policy validation: CEL-based rules and AI-powered validation.
