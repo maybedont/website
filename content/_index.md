@@ -1,32 +1,37 @@
 ---
 title: Home
 hero:
-  headline: "Your Engineers are Already Using MCP"
-  subheadline: "Don't Let Them Shoot Themselves in the Foot"
-  description: "AI agents don't follow carefully constructed scripts. Your policies shouldn't depend on them either."
+  headline: "You're already using MCP"
+  subheadline: "Don't be the reason your teammates respond to pager this weekend"
+  description: "AI agents don't follow carefully constructed scripts. Your development processes should stop assuming they will."
   cta_primary_text: "Book a Demo"
   cta_primary_url: "https://cal.com/kmillermd/30min"
   cta_secondary_text: "Download Now"
   cta_secondary_url: "/download/"
-  key_message_title: "De-risk AI. Avoid disaster."
-  key_message_text: "In the time it took you to read this there was a major security breach caused by an AI agent ...we just don't know about it, yet."
+  key_message_title: "Ship faster. Sleep better."
+  key_message_text: "Your AI agent just dropped a table in the database. Is that what you meant by 'Help me clean things up'?"
 
 features:
-  title: "Key Features"
-  subtitle: "Explore how Maybe Don't AI protects your organization from AI risks."
+  title: "Built for Developers Who Care About Quality"
+  subtitle: "Stop babysitting AI. Start shipping with confidence."
   items:
-    - title: "Intercept. Analyze. Control."
-      description: "Maybe Don't AI sits between AI agents and MCP servers, monitoring every request — requiring validation on nefarious actions before they happen."
-    - title: "Enterprise-Grade Security"
-      description: "Zero visibility means big risk. Don't be tomorrow's headline. Build security into AI workflows with real-time auditing."
-    - title: "Easy Integration"
-      description: "Plug-and-play APIs. Start intercepting AI activity in minutes, not months. See everything and stop bad AI actors in real time."
-    - title: "Don't be the breach story."
-      description: "Maybe Don't AI uses a combination of AI policy, a traditional policy engine, human in the loop (where necessary) and anomaly detection to give you confidence with your AI agents."
-    - title: "Real-time Monitoring"
-      description: "Track every AI action as it happens. Get instant alerts when agents attempt risky operations. Full audit trail for compliance."
-    - title: "Policy Engine"
-      description: "Define custom rules for AI behavior. Automatically block dangerous operations. Flexible policy configuration for your needs."
+    - title: "See What AI Is Actually Doing"
+      description: "Maybe Don't sits between agents and MCP servers. Every request logged. Every dangerous operation flagged before execution."
+    
+    - title: "Enforce Standards AI Ignores"
+      description: "Verbose deny messages train agents in real-time. 'Tabs not spaces.' 'PRs under 500 lines.' You set standards. AI learns them."
+    
+    - title: "AI Linting for Behavior"
+      description: "Tell agents 'Maybe Don't do that' with specific feedback. They course-correct immediately. No more re-prompting the same mistake."
+    
+    - title: "Catch Stupid Before It Happens"
+      description: "Policy engine + anomaly detection + AI judgment. Catches the 'DROP TABLE' moment before it happens."
+    
+    - title: "Rollback Without Panic"
+      description: "Full operation history. Know exactly what changed, when, and by which agent. Debug AI like you debug code."
+    
+    - title: "Your Rules, Your Stack"
+      description: "Custom policies per repo, per environment, per risk tolerance. Block what matters to YOU, not generic 'best practices.'"
 
 demo:
   title: "Demo"
