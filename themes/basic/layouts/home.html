@@ -1,34 +1,40 @@
 {{ define "main" }}
 <section class="hero-section">
   <div class="hero-container">
-    <div class="hero-content">
-      <h1 class="hero-headline">
-        {{ .Params.hero.headline }}
-      </h1>
+    <h1 class="hero-headline">
+      {{ .Params.hero.headline }}
+    </h1>
 
-      <p class="hero-subheadline">
-        {{ .Params.hero.subheadline }}
-      </p>
-
-      <p class="hero-description">
-        {{ .Params.hero.description }}
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="{{ .Params.hero.cta_primary_url }}" class="cta-primary">
-          {{ .Params.hero.cta_primary_text }}
-        </a>
-        <a href="{{ .Params.hero.cta_secondary_url }}" class="cta-secondary">
-          {{ .Params.hero.cta_secondary_text }}
-        </a>
-      </div>
-
-      <div class="hero-key-message">
-        <p class="key-message-title">{{ .Params.hero.key_message_title }}</p>
-        <p class="key-message-text">
-          {{ .Params.hero.key_message_text }}
+    <div class="hero-grid">
+      <div class="hero-content">
+        <p class="hero-subheadline">
+          {{ .Params.hero.subheadline }}
         </p>
+
+        <p class="hero-description">
+          {{ .Params.hero.description }}
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="{{ .Params.hero.cta_primary_url }}" class="cta-primary">
+            {{ .Params.hero.cta_primary_text }}
+          </a>
+          <a href="{{ .Params.hero.cta_secondary_url }}" class="cta-secondary">
+            {{ .Params.hero.cta_secondary_text }}
+          </a>
+        </div>
       </div>
+
+      <div class="hero-image">
+        <img src="/images/ai_policyyamlshot.png" alt="AI Policy Screenshot" />
+      </div>
+    </div>
+
+    <div class="hero-key-message">
+      <p class="key-message-title">{{ .Params.hero.key_message_title }}</p>
+      <p class="key-message-text">
+        {{ .Params.hero.key_message_text }}
+      </p>
     </div>
   </div>
 </section>
