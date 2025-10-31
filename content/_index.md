@@ -3,7 +3,7 @@ title: Home
 hero:
   headline: "You're already using MCP"
   subheadline: "Don't be the reason your teammates respond to pager this weekend"
-  description: "AI agents don't follow carefully constructed scripts. Your development processes should stop assuming they will."
+  description: "AI agents don't act in predictable ways. Your development processes should stop assuming they will."
   cta_primary_text: "Book a Demo"
   cta_primary_url: "https://cal.com/kmillermd/30min"
   cta_secondary_text: "Download Now"
