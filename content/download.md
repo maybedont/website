@@ -25,7 +25,7 @@ The latest version is `v0.5.1` - you can download a binary for your architecture
 ### Quickstart Prerequisites
 
 Before starting, you'll need:
-- **uvx** (Python package runner) - Install with: `pip install uvx` or `pipx install uvx`
+- **uvx** (Python package runner) - Install with: `pip install uv` or `pipx install uv`
   - The quickstart config includes an AWS documentation server that requires uvx to run
   - You can remove the downstream aws-docs if you wish to skip this.
 - **OpenAI account with billing enabled** - The gateway uses OpenAI's API which requires a payment method on file
@@ -105,21 +105,4 @@ In this instance, we have the binary and the config located in the user's Downlo
 
 Once you've updated the config json, you'll need to restart Claude Desktop.
 
-### Container (Docker, Podman, etc.)
-
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.5.1`. You can run it with something like:
-
-```bash
-podman run \
-  -e GITHUB_TOKEN \
-  -e OPENAI_API_KEY \
-  -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
-  -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.5.1 start
-```
-
-NOTE:
-- Make sure the gateway-config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
-- You may want to change the gateway-config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
-
-For detailed configuration instructions, see our [Documentation](/docs/) section.
+For detailed configuration instructions, including how to run with Docker/Podman, see our [Documentation](/docs/) section.

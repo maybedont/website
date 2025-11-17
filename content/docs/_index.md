@@ -316,3 +316,20 @@ audit:
 
 1. **Use environment variables for secrets** - Never hardcode API keys or tokens in your config unless it's stored as a secret.
 2. **Enable both CEL and AI validation** - Use CEL for deterministic rules and AI for complex scenarios
+
+## Running with Containers (Docker, Podman, etc.)
+
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.5.1`. You can run it with something like:
+
+```bash
+podman run \
+  -e GITHUB_TOKEN \
+  -e OPENAI_API_KEY \
+  -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
+  -p 8080:8080 \
+  ghcr.io/maybedont/maybe-dont:v0.5.1 start
+```
+
+**Important Notes:**
+- Make sure the gateway-config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
+- You may want to change the gateway-config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
