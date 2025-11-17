@@ -22,87 +22,51 @@ The latest version is `v0.5.1` - you can download a binary for your architecture
 - **Windows:** `Windows_x86_64`
 - **Linux:** `Linux_x86_64`
 
-### Quickstart Prerequisites
+### Prerequisites
 
 Before starting, you'll need:
-- **uvx** (Python package runner) - Install with: `pip install uv` or `pipx install uv`
-  - The quickstart config includes an AWS documentation server that requires uvx to run
-  - You can remove the downstream aws-docs if you wish to skip this.
 - **OpenAI account with billing enabled** - The gateway uses OpenAI's API which requires a payment method on file
   - If you want to skip AI validation, you can set `ai_validation.enabled: false` in the config
-  - You can also use any openAI-compatible api, but you'll need to override the URL via config
+  - You can also use any openAI-compatible API, but you'll need to override the URL via config
   - Currently we find that OpenAI's API is much more reliable for running checks than Anthropic
-- A [**GitHub Token**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-  - The quickstart config uses the Github MCP server, which requires a token to authenticate
+- A [**GitHub Personal Access Token (PAT)**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+  - Used to authenticate requests to GitHub via the MCP server
 
 ### Quickstart
 
-After you extract the downloaded file, you should see a binary, and a gateway-config.yaml. The basic config connects to the Github MCP server and exposes it on http://localhost:8080/mcp with basic rules in place. It will log any tool calls to `./audit.log`. This requires two secrets to operate, which we will export as [environment variables](https://en.wikipedia.org/wiki/Environment_variable) to our shell:
+After you extract the downloaded file, you should see a binary and a `gateway-config.yaml`. The default configuration connects to both the GitHub MCP server and AWS documentation server, exposing them on `http://localhost:8080/mcp` with security rules in place. All tool calls are logged to `./audit.log`.
+
+You'll need to set your OpenAI API key as an [environment variable](https://en.wikipedia.org/wiki/Environment_variable):
 
 ```bash
-# An open AI api key for rule validations
+# An OpenAI API key for AI-based rule validation
 export OPENAI_API_KEY="Insert Key Here"
-
-# This is your github token, which will be used to authenticate to downstream MCP servers
-export GITHUB_TOKEN="Insert Token Here"
 ```
 
-_Need help getting these keys?_
-- [_Get OpenAI API Key_](https://platform.openai.com/docs/quickstart) - [_Get GitHub Token_](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+_Need help getting your key?_ [_Get OpenAI API Key_](https://platform.openai.com/docs/quickstart)
 
-Now you can connect to the local gateway as an MCP server. There are a couple ways to do this.
+### Running Maybe Don't
 
-#### 1. MCP Inspector
-If you just want to inspect what is exposed, I like to use the [MCP Inspector](https://github.com/modelcontextprotocol/inspector).
+1. **Start the gateway:**
+   ```bash
+   ./maybe-dont start
+   ```
 
-```bash
-npx @modelcontextprotocol/inspector
-```
+2. **Connect with MCP Inspector:**
+   ```bash
+   npx @modelcontextprotocol/inspector
+   ```
 
-Then open your browser to http://localhost:6274, set the transport to `Streamable HTTP`, and put `http://localhost:8080/mcp` as the URL. Then you can go to the `Tools` tab and list the tools available, and even test them out.
+3. **Open your browser** to http://localhost:6274, set the transport to `Streamable HTTP`, and use `http://localhost:8080/mcp` as the URL.
 
-#### 2. Claude Desktop
+4. **Add your GitHub PAT:** In the inspector, add a custom header:
+   - **Header name:** `X-GitHub-Token`
+   - **Header value:** Your GitHub Personal Access Token
 
-**NOTE:** This requires the server type in the gateway-config.yaml to be stdio, and we need to adjust the audit log location:
+5. **Explore available tools** in the Tools tab - you can now access both GitHub and AWS documentation MCP servers securely through the gateway.
 
-```yaml
-server:
-  type: stdio
+**Using Claude Desktop?** See our [full documentation](/docs/) for stdio configuration.
 
-downstream_mcp_servers:
-  github:
-    type: http
-    url: "https://api.githubcopilot.com/mcp/"
-    http:
-      headers:
-        Authorization: "Bearer ${GITHUB_TOKEN}"
+---
 
-audit:
-  enabled: true
-  path: /Users/user/maybe-dont_0.5.1_Darwin_arm64/audit.log
-```
-
-In this instance, we have the binary and the config located in the user's Downloads directory on OSX (replace user with your username). You may need to click through some system prompts, and then approve the binary in the Security and Privacy settings.
-
-```json
-# claude_desktop_config.json
-{
-  "mcpServers": {
-    "maybe-dont": {
-      "command": "/Users/user/Downloads/maybe-dont_0.5.1_Darwin_arm64/maybe-dont",
-      "args": [
-        "start",
-        "--config-path=/Users/user/Downloads/maybe-dont_0.5.1_Darwin_arm64"
-      ],
-      "env": {
-        "GITHUB_TOKEN": "<Insert GITHUB_TOKEN>",
-        "OPENAI_API_KEY": "Insert your openAI key"
-      }
-    }
-  }
-}
-```
-
-Once you've updated the config json, you'll need to restart Claude Desktop.
-
-For detailed configuration instructions, including how to run with Docker/Podman, see our [Documentation](/docs/) section.
+For detailed configuration instructions, including custom rules, Docker/Podman deployment, and advanced setups, see our [Documentation](/docs/) section.
