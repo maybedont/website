@@ -55,21 +55,13 @@ _Need help getting your key?_ [_Get OpenAI API Key_](https://platform.openai.com
 
 2. **Connect with Claude Code:**
    - [Install Claude Code](https://code.claude.com/docs/en/get-started/installation) if you haven't already
-   - Configure the MCP server in your Claude Code settings (`~/.config/claude-code/config.json`):
-   ```json
-   {
-     "mcpServers": {
-       "maybe-dont": {
-         "url": "http://localhost:8080/mcp",
-         "transport": {
-           "type": "http"
-         },
-         "headers": {
-           "X-GitHub-Token": "YOUR_GITHUB_PAT_HERE"
-         }
-       }
-     }
-   }
+   - Set your GitHub PAT as an environment variable:
+   ```bash
+   export GITHUB_TOKEN="YOUR_GITHUB_PAT_HERE"
+   ```
+   - Add the MCP server to Claude Code:
+   ```bash
+   claude mcp add maybe-dont http://localhost:8080/mcp --transport http --header "X-GitHub-Token: $GITHUB_TOKEN"
    ```
 
 3. **Start Claude Code** and you can now access both GitHub and AWS documentation MCP servers securely through the gateway with AI assistance.
