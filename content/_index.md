@@ -1,7 +1,7 @@
 ---
 title: Home
 hero:
-  headline: "You're already using MCP"
+  headline: "You're Already Using MCP"
   subheadline: "Don't be the reason your teammates respond to pager this weekend"
   description: "AI agents don't act in predictable ways. Your development processes should stop assuming they will."
   cta_primary_text: "Book a Demo"
