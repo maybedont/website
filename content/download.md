@@ -12,9 +12,9 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 ### Download The Binary
 
-The latest version is `v0.5.1` - you can download a binary for your architecture below:
+The latest version is `v0.5.7` - you can download a binary for your architecture below:
 
-{{< list-files-for-version version = v0.5.1 >}}
+{{< list-files-for-version version = v0.5.7 >}}
 
 **Not sure which file to download?**
 - **Mac (Apple Silicon):** `Darwin_arm64` (most common)
