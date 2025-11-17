@@ -774,15 +774,16 @@ footer {
 
 /* Nested TOC items (H3s) */
 .docs-toc nav ul ul {
-	margin-left: 1rem;
+	margin-left: 1.25rem;
 	margin-top: 0.25rem;
 	margin-bottom: 0.25rem;
 }
 
 .docs-toc nav ul ul li a {
-	font-size: 0.875rem;
-	color: var(--color-gray-600);
-	padding: 0.4rem 0;
+	font-size: 0.8125rem;
+	color: var(--color-gray-500);
+	padding: 0.35rem 0;
+	font-weight: 400;
 }
 
 /* Main Content Area */
