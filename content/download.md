@@ -31,6 +31,7 @@ Before starting, you'll need:
   - Currently we find that OpenAI's API is much more reliable for running checks than Anthropic
 - A [**GitHub Personal Access Token (PAT)**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
   - Used to authenticate requests to GitHub via the MCP server
+  - Can be a fine-grained token with minimal permissions (really anything you want to give it)
 
 ### Quickstart
 
@@ -52,18 +53,26 @@ _Need help getting your key?_ [_Get OpenAI API Key_](https://platform.openai.com
    ./maybe-dont start
    ```
 
-2. **Connect with MCP Inspector:**
-   ```bash
-   npx @modelcontextprotocol/inspector
+2. **Connect with Claude Code:**
+   - [Install Claude Code](https://code.claude.com/docs/en/get-started/installation) if you haven't already
+   - Configure the MCP server in your Claude Code settings (`~/.config/claude-code/config.json`):
+   ```json
+   {
+     "mcpServers": {
+       "maybe-dont": {
+         "url": "http://localhost:8080/mcp",
+         "transport": {
+           "type": "http"
+         },
+         "headers": {
+           "X-GitHub-Token": "YOUR_GITHUB_PAT_HERE"
+         }
+       }
+     }
+   }
    ```
 
-3. **Open your browser** to http://localhost:6274, set the transport to `Streamable HTTP`, and use `http://localhost:8080/mcp` as the URL.
-
-4. **Add your GitHub PAT:** In the inspector, add a custom header:
-   - **Header name:** `X-GitHub-Token`
-   - **Header value:** Your GitHub Personal Access Token
-
-5. **Explore available tools** in the Tools tab - you can now access both GitHub and AWS documentation MCP servers securely through the gateway.
+3. **Start Claude Code** and you can now access both GitHub and AWS documentation MCP servers securely through the gateway with AI assistance.
 
 **Using Claude Desktop?** See our [full documentation](/docs/) for stdio configuration.
 
