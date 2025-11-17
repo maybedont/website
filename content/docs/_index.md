@@ -8,6 +8,28 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 **Why use it?** When AI assistants interact with your systems through MCP (Model Context Protocol) servers, you want protection against unintended consequences. Maybe Don't gives you that safety net with real-time monitoring and intelligent blocking.
 
+## Installation
+
+Maybe Don't can be installed through several methods depending on your environment.
+
+### Download Pre-built Binaries
+
+The easiest way to get started is to download pre-built binaries for your platform from the [Download page](/download/). Available for Linux, macOS, and Windows.
+
+### Docker/Container Installation
+
+Maybe Don't is available as a container image from GitHub Container Registry:
+
+```bash
+# Using Docker
+docker pull ghcr.io/maybedont/maybe-dont:v0.5.1
+
+# Using Podman
+podman pull ghcr.io/maybedont/maybe-dont:v0.5.1
+```
+
+See the [Running with Containers](#running-with-containers-docker-podman-etc) section below for detailed usage instructions.
+
 ## Configuration
 
 This guide explains how to configure both the client and server portions of the MCP Security Gateway for enterprise-grade security controls.
@@ -154,7 +176,7 @@ Common Expression Language (CEL) rules for deterministic policy enforcement:
 policy_validation:
   enabled: true
   # Optional: path to custom rules file otherwise default rules will be used.
-  rules_file: "cel_rules.yaml"
+  rules_file: "cel.rules.yaml"
 ```
 
 ##### Built-in CEL Rules
@@ -165,9 +187,9 @@ The gateway includes default rules that block dangerous operations:
 
 ##### Custom CEL Rules
 
-Set the config file `policy_validation.rules_file` to the name of the rules file, like `cel_rules.yaml`.
+Set the config file `policy_validation.rules_file` to the name of the rules file, like `cel.rules.yaml`.
 
-Add your own rules to `cel_rules.yaml`:
+Add your own rules to `cel.rules.yaml`:
 
 ```yaml
 rules:
@@ -204,7 +226,7 @@ ai_validation:
   endpoint: "https://api.openai.com/v1/chat/completions"
   model: "gpt-4o-mini"
   # Optional: path to custom AI rules file. If not set, default rules will be used.
-  rules_file: "ai_rules.yaml"
+  rules_file: "ai.rules.yaml"
   # API key (can also be set via OPENAI_API_KEY env var)
   api_key: "${OPENAI_API_KEY}"
 ```
@@ -223,9 +245,9 @@ The gateway includes AI rules for detecting:
 
 #### Custom AI Rules
 
-First set `ai_validation.rules_file` to the name of your file, like `ai_rules.yaml`.
+First set `ai_validation.rules_file` to the name of your file, like `ai.rules.yaml`.
 
-Then write your own AI rules in `ai_rules.yaml`:
+Then write your own AI rules in `ai.rules.yaml`:
 
 ```yaml
 rules:
@@ -301,7 +323,7 @@ downstream_mcp_servers:
 
 policy_validation:
   enabled: true
-  rules_file: "production_rules.yaml"
+  rules_file: "production.rules.yaml"
 
 ai_validation:
   enabled: true
@@ -319,20 +341,39 @@ audit:
 
 ## Running with Containers (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.5.1`. You can run it with something like:
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.5.1`.
+
+### Basic Container Usage
+
+Mount your config directory containing all configuration and rules files:
 
 ```bash
+# Using Docker
+docker run \
+  -e GITHUB_TOKEN \
+  -e OPENAI_API_KEY \
+  -v $(pwd)/config:/config \
+  -p 8080:8080 \
+  ghcr.io/maybedont/maybe-dont:v0.5.1 start --config-path /config
+
+# Using Podman
 podman run \
   -e GITHUB_TOKEN \
   -e OPENAI_API_KEY \
-  -v $(pwd)/gateway-config.yaml:/gateway-config.yaml \
+  -v $(pwd)/config:/config \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.5.1 start
+  ghcr.io/maybedont/maybe-dont:v0.5.1 start --config-path /config
 ```
 
+**Your config directory should contain:**
+- `gateway-config.yaml` - Main gateway configuration (required)
+- `cel.rules.yaml` - Custom CEL policy rules (optional, if referenced in gateway-config.yaml)
+- `ai.rules.yaml` - Custom AI validation rules (optional, if referenced in gateway-config.yaml)
+
 **Important Notes:**
-- Make sure the gateway-config.yaml is listening on `0.0.0.0:8080` for this particular command to work.
-- You may want to change the gateway-config.yaml to send the audit log to stdout, rather than a file. Or mount the audit log locally, up to you.
+- Make sure your `gateway-config.yaml` server is listening on `0.0.0.0:8080` for the exposed port to work
+- Consider sending audit logs to stdout instead of a file, or mount the audit log directory as an additional volume
+- All environment variables referenced in your config files (e.g., `${GITHUB_TOKEN}`, `${OPENAI_API_KEY}`) should be passed via `-e` flags
 
 ## Testing and Debugging with MCP Inspector
 
