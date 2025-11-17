@@ -55,3 +55,7 @@ disableKinds = ["taxonomy", "term"]
       [markup.goldmark.parser.attribute]
         block = true
         title = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false

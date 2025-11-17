@@ -70,10 +70,10 @@ _Need help getting your key?_ [_Get OpenAI API Key_](https://platform.openai.com
    ```
    This will attempt to connect to the server and show you the configured MCP servers.
 
-4. **Start Claude Code** and you can now access both GitHub and AWS documentation MCP servers securely through the gateway with AI assistance.
+4. **Start Claude Code** and you can now access both GitHub and AWS documentation MCP servers securely through the gateway with AI guardrails.
    - You can also verify it's working from within Claude by running `/mcp` to see available MCP tools
 
-**Using Claude Desktop?** See our [full documentation](/docs/) for stdio configuration.
+**Need More?** See our [full documentation](/docs/) for additional configuration.
 
 ---
 

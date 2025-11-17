@@ -1,9 +1,27 @@
 {{ define "main" }}
 <div class="content-page">
-  <div class="content-container">
-    <h1 class="content-title">{{ .Title }}</h1>
-    <div class="content-body">
-      {{ .Content }}
+  <div class="docs-layout">
+    <!-- Mobile TOC Toggle -->
+    <button class="toc-toggle" id="toc-toggle" aria-label="Toggle table of contents">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Sidebar with TOC -->
+    <aside class="docs-sidebar" id="docs-sidebar">
+      <div class="docs-toc">
+        <h2 class="toc-title">Contents</h2>
+        {{ .TableOfContents }}
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="docs-content">
+      <h1 class="content-title">{{ .Title }}</h1>
+      <div class="content-body">
+        {{ .Content }}
+      </div>
     </div>
   </div>
 </div>
