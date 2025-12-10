@@ -22,10 +22,10 @@ Maybe Don't is available as a container image from GitHub Container Registry:
 
 ```bash
 # Using Docker
-docker pull ghcr.io/maybedont/maybe-dont:v0.6.0
+docker pull ghcr.io/maybedont/maybe-dont:v0.7.0
 
 # Using Podman
-podman pull ghcr.io/maybedont/maybe-dont:v0.6.0
+podman pull ghcr.io/maybedont/maybe-dont:v0.7.0
 ```
 
 See the [Running with Containers](#running-with-containers-docker-podman-etc) section below for detailed usage instructions.
@@ -341,7 +341,7 @@ audit:
 
 ## Running with Containers (Docker, Podman, etc.)
 
-The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.6.0`.
+The latest container image is available at `ghcr.io/maybedont/maybe-dont:v0.7.0`.
 
 ### Basic Container Usage
 
@@ -354,7 +354,7 @@ docker run \
   -e OPENAI_API_KEY \
   -v $(pwd)/config:/config \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.6.0 start --config-path /config
+  ghcr.io/maybedont/maybe-dont:v0.7.0 start --config-path /config
 
 # Using Podman
 podman run \
@@ -362,7 +362,7 @@ podman run \
   -e OPENAI_API_KEY \
   -v $(pwd)/config:/config \
   -p 8080:8080 \
-  ghcr.io/maybedont/maybe-dont:v0.6.0 start --config-path /config
+  ghcr.io/maybedont/maybe-dont:v0.7.0 start --config-path /config
 ```
 
 **Your config directory should contain:**
