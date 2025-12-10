@@ -1,6 +1,6 @@
-{{ $version       := .Get "version" }}
-{{ $filepath      := printf "/static/download/%s" $version }}
-{{ $files         := readDir $filepath }}
+{{ $version  := .Get "version" }}
+{{ $filepath := printf "/static/download/%s" $version }}
+{{ $files    := readDir $filepath }}
 {{ if (fileExists $filepath) }}
 <div>
     <ul>
