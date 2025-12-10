@@ -12,3 +12,6 @@ hugo_stats.json
 # Server logs
 server.log
 *.log
+
+# Goland
+.idea
