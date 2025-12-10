@@ -12,7 +12,7 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 Maybe Don't can be installed through several methods depending on your environment.
 
-### Download Pre-built Binaries
+### Download Packages
 
 The easiest way to get started is to download pre-built binaries for your platform from the [Download page](/download/). Available for Linux, macOS, and Windows.
 
