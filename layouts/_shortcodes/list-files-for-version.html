@@ -1,8 +1,9 @@
-{{ $version  := .Get "version" }}
-{{ $filepath := printf "/static/download/%s" $version }}
-{{ $files    := readDir $filepath }}
+{{ $version      := .Get "version" }}
+{{ $filepath     := printf "/static/download/%s" $version }}
+{{ $relativePath := printf "/download/%s" $version }}
+{{ $files        := readDir $filepath }}
 {{ if (fileExists $filepath) }}
-<div>
+<div style="margin-bottom: 25px;">
     <ul>
     {{- range $files }}
         {{ if not (hasSuffix .Name "_checksums.txt") }}
@@ -16,20 +17,45 @@
 </div>
 {{ end }}
 
-<!--{{ if (fileExists $filepath) }}-->
-<!--<div>-->
-<!--    Choose platform:-->
-<!--    <form>-->
-<!--        <label>-->
-<!--            <select name="download-file">-->
-<!--                {{- range $files }}-->
-<!--                {{ if not (hasSuffix .Name "_checksums.txt") }}-->
-<!--                <option value="/download/{{ $version }}/{{ .Name }}">{{ .Name }}</option>-->
-<!--                {{ end }}-->
-<!--                {{- end }}-->
-<!--            </select>-->
-<!--        </label>-->
-<!--    </form>-->
-<!--    <a style="font-size: 0.8em; margin-left: 10px;" href="/download/{{ $version }}/{{ .Name }}.sha256"><i style="margin-right: 5px;" class="fa-solid fa-download"></i>sha256</a>-->
-<!--</div>-->
-<!--{{ end }}-->
+{{ if (fileExists $filepath) }}
+<div style="margin-bottom: 25px;">
+    <p>Choose platform:</p>
+    <label style="display: block; margin-bottom: 60px;">
+        <select id="download-select" name="download-file">
+            {{- range $files }}
+            {{ if not (hasSuffix .Name "_checksums.txt") }}
+            <option data-name="{{ .Name }}" value="/download/{{ $version }}/{{ .Name }}">{{ .Name }}</option>
+            {{ end }}
+            {{- end }}
+        </select>
+    </label>
+
+    <div style="margin-top: 10px;">
+        <a id="download-file" class="button"><i class="fa-solid fa-download"></i><span></span></a>
+        <a id="download-checksum" class="download-checksum"><i class="fa-solid fa-download"></i>sha256</a>
+    </div>
+
+</div>
+{{ end }}
+
+<script>
+    const select = document.getElementById('download-select');
+    const downloadFile = document.getElementById('download-file');
+    const downloadChecksum = document.getElementById('download-checksum');
+    const onChange = () =>  {
+        const value = select.value;
+        const selected = select.options[select.selectedIndex];
+        const parts = selected.dataset.name
+            .replace("maybe-dont_", "")
+            .replace(".zip", "")
+            .replace(".tar.gz", "")
+            .split("_");
+        const shortName = (parts[1] + " " + parts[2])
+            .replace("darwin", "macOS");
+        downloadFile.setAttribute('href', value);
+        downloadFile.querySelector('span').innerText = shortName;
+        downloadChecksum.setAttribute('href', value + '.sha256');
+    };
+    select.addEventListener('change', onChange);
+    onChange();
+</script>

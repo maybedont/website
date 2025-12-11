@@ -12,7 +12,7 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 ### Download the package
 
-The latest version is `v0.7.1`. 
+#### v0.7.1
 
 You can download the package below, click on the link that matches your system architecture. Note that the file will be in the form of a `.tar.gz` for all platforms except Windows which will be a `.zip` file. 
 
