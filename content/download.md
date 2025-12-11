@@ -10,17 +10,22 @@ Maybe Don't is a security gateway that sits between AI assistants (like Claude) 
 
 ## Run The Gateway
 
-### Download The Binary
+### Download the package
 
-The latest version is `v0.7.1` - you can download a binary for your architecture below:
+The latest version is `v0.7.1`. 
+
+You can download the package below, click on the link that matches your system architecture. Note that the file will be in the form of a `.tar.gz` for all platforms except Windows which will be a `.zip` file. 
 
 {{< list-files-for-version version = v0.7.1 >}}
 
 **Not sure which file to download?**
-- **Mac (Apple Silicon):** `Darwin_arm64` (most common)
-- **Mac (Intel):** `Darwin_x86_64`
-- **Windows:** `Windows_x86_64`
-- **Linux:** `Linux_x86_64`
+- **macOS (Apple Silicon):** `darwin_arm64` (most common)
+- **macOS (Intel):** `darwin_x86_64`
+- **64-bit x86 Windows:** `windows_x86_64`
+- **32-bit x86 Windows:** `windows_i386`
+- **64-bit arm Windows:** `windows_x86_64`
+- **64-bit Linux:** `linux_x86_64`
+- **32-bit Linux:** `linux_i386`
 
 ### Prerequisites
 

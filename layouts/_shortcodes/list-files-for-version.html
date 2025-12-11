@@ -1,13 +1,35 @@
-{{ $version     := .Get "version" }}
+{{ $version  := .Get "version" }}
 {{ $filepath := printf "/static/download/%s" $version }}
 {{ $files    := readDir $filepath }}
-{{ if (fileExists $filepath)}}
+{{ if (fileExists $filepath) }}
 <div>
     <ul>
     {{- range $files }}
-    <li><a href=/download/{{ $version }}/{{ .Name }}>{{ .Name }}</a></li>
+        {{ if not (hasSuffix .Name "_checksums.txt") }}
+        <li>
+            <a href="/download/{{ $version }}/{{ .Name }}"> {{ .Name }} </a>
+            <a style="font-size: 0.8em; margin-left: 10px;" href="/download/{{ $version }}/{{ .Name }}.sha256"><i style="margin-right: 5px;" class="fa-solid fa-download"></i>sha256</a>
+        </li>
+        {{ end }}
     {{- end }}
     </ul>
 </div>
 {{ end }}
 
+<!--{{ if (fileExists $filepath) }}-->
+<!--<div>-->
+<!--    Choose platform:-->
+<!--    <form>-->
+<!--        <label>-->
+<!--            <select name="download-file">-->
+<!--                {{- range $files }}-->
+<!--                {{ if not (hasSuffix .Name "_checksums.txt") }}-->
+<!--                <option value="/download/{{ $version }}/{{ .Name }}">{{ .Name }}</option>-->
+<!--                {{ end }}-->
+<!--                {{- end }}-->
+<!--            </select>-->
+<!--        </label>-->
+<!--    </form>-->
+<!--    <a style="font-size: 0.8em; margin-left: 10px;" href="/download/{{ $version }}/{{ .Name }}.sha256"><i style="margin-right: 5px;" class="fa-solid fa-download"></i>sha256</a>-->
+<!--</div>-->
+<!--{{ end }}-->
