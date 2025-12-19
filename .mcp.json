@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "maybedont": {
+      "type": "http",
+      "url": "https://maybe-dont-dev-580294893150.us-central1.run.app/mcp",
+      "headers": {
+        "X-GitHub-Token": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}
